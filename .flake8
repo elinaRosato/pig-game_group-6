@@ -1,0 +1,12 @@
+# .flake8
+
+[flake8]
+
+# Set the maximum allowed line length (default is 79)
+max-line-length = 120
+
+# Include plugins
+plugins = flake8_docstrings, flake8_polyfill
+
+# Convention for docstrings
+docstring-convention = pep257

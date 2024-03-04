@@ -1,0 +1,8 @@
+# .pylintrc
+
+[pylint]
+# Set the maximum allowed line length
+max-line-length = 120
+
+# Allow or disallow wildcard imports (default is disallow)
+wildcard-import = yes
