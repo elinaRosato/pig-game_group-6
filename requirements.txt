@@ -18,13 +18,3 @@ sphinx-rtd-theme # for ReadTheDocs local build
 
 # Unit test and coverage
 coverage
-
-
-
-
-
-# Code analysis
-#flake8==7.0.0
-#flake8-docstrings==1.7.0
-#flake8-polyfill==1.0.2
-#pylint==3.1.0
