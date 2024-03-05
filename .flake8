@@ -10,3 +10,9 @@ plugins = flake8_docstrings, flake8_polyfill
 
 # Convention for docstrings
 docstring-convention = pep257
+
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    src/tests
