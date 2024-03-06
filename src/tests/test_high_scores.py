@@ -28,3 +28,17 @@ class test_high_score(unittest.TestCase):
         os.remove(self.filename)
         self.highscore.load_highscores()
         self.assertEqual(self.highscore.highscores, {})
+
+    #This tests saving the highscore
+    def test_save_highscores(self):
+        """Test saving highscores to file."""
+        self.highscore.highscores = {"Erik": [100, 150]}
+        self.highscore.save_highscores()
+        self.assertTrue(os.path.exists(self.filename))
+
+    #This tests savnig a highscore for an already existing player
+    def test_update_highscores_existing_player(self):
+        """Test updating highscores for an existing player."""
+        self.highscore.highscores = {"Erik": [100, 150]}
+        self.highscore.update_highscores("Erik", 200)
+        self.assertEqual(self.highscore.highscores["Erik"], [100, 150, 200])
