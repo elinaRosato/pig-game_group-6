@@ -52,7 +52,6 @@ class TestDice(unittest.TestCase):
         self.assertIsNotNone(results)
         self.assertEqual(len(results), num_rolls)
             
-
     def test_roll_numbers_are_uniformly_represented(self):
         num_rolls = 100
         results = [self.dice.roll() for _ in range(num_rolls)]
@@ -61,6 +60,15 @@ class TestDice(unittest.TestCase):
             occurrence = results.count(value)
             self.assertLessEqual(occurrence, num_rolls * 0.5)
     
+    def test_reproducible_results_with_fixed_seed(self):
+        seed = 32
+        random.seed(seed)
+        result1 = self.dice.roll()
+        self.assertIsNotNone(result1)
+        random.seed(seed)
+        result2 = self.dice.roll()
+        self.assertIsNotNone(result2)
+        self.assertEqual(result1, result2)
         
 if __name__ == '__main__':
     unittest.main()
