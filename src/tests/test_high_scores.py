@@ -81,3 +81,9 @@ class test_high_score(unittest.TestCase):
         """Test updating highscores with an invalid score."""
         with self.assertRaises(TypeError):
             self.highscore.update_highscores("Erik", "invalid_score")
+
+    #This method tests to input a negative number to the highscore
+    def test_update_highscores_negative_score(self):
+        """Test updating highscores with a negative score."""
+        with self.assertRaises(ValueError):
+            self.highscore.update_highscores("Erik", -50)
