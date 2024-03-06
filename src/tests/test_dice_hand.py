@@ -22,3 +22,11 @@ class TestDiceHand(unittest.TestCase):
             self.assertIsInstance(roll, int)
             self.assertGreaterEqual(roll, 1)
             self.assertLessEqual(roll, 6)
+            
+    def test_roll_dice_invalid_input_negative_float(self):
+        with self.assertRaises(ValueError):
+            self.dice_hand.roll_dice(-1.5)
+
+    def test_roll_dice_invalid_input_positive_float(self):
+        with self.assertRaises(TypeError):
+            self.dice_hand.roll_dice(1.5)
