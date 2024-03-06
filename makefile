@@ -3,7 +3,7 @@
 # Change this to be your variant of the python command
 # Set the env variable PYTHON to another value if needed
 # PYTHON=python3 make version
-PYTHON ?= python3 # python3 py
+PYTHON ?= python # python3 py
 
 # Print out colored action message
 MESSAGE = printf "\033[32;01m---> $(1)\033[0m\n"
@@ -86,42 +86,34 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m unittest discover
+	$(PYTHON) -m unittest discover -s src/game -p "test_*.py"
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m unittest discover -s src/game -p "test_*.py"
 	coverage html
 	coverage report -m
 
-test: lint coverage
+test: coverage
 
 
 # ---------------------------------------------------------
 # Work with generating documentation.
 #
-.PHONY: pydoc
-pydoc:
-	@$(call MESSAGE,$@)
-	install -d doc/pydoc
-	$(PYTHON) -m pydoc -w src/*.py
-	mv *.html doc/pydoc
 
 pdoc:
 	@$(call MESSAGE,$@)
-	pdoc --force --html --output-dir doc/pdoc src/*.py
+	pdoc --force --html --output-dir doc/api src/game/*.py
 
 pyreverse:
 	@$(call MESSAGE,$@)
-	install -d doc/pyreverse
-	pyreverse src/*.py
-	dot -Tpng classes.dot -o doc/pyreverse/classes.png
-	dot -Tpng packages.dot -o doc/pyreverse/packages.png
-	rm -f classes.dot packages.dot
+	pyreverse src/game
+	dot -Tpng classes.dot -o doc/uml/classes.png
+	dot -Tpng packages.dot -o doc/uml/packages.png
 
-doc: pdoc pyreverse #pydoc sphinx
+doc: pdoc
 
-
+uml: pyreverse
 
 # ---------------------------------------------------------
 # Calculate software metrics for your project.
