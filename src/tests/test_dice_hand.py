@@ -34,3 +34,7 @@ class TestDiceHand(unittest.TestCase):
     def test_roll_dice_invalid_input_letter(self):
         with self.assertRaises(TypeError):
             self.dice_hand.roll_dice('d')
+            
+    def test_roll_dice_invalid_input_None(self):
+        with self.assertRaises(TypeError):
+            self.dice_hand.roll_dice(None)
