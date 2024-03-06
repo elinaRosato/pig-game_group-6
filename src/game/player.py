@@ -7,3 +7,8 @@ class Player:
             raise ValueError("Name must be a non-empty string.")
         else:
             self.name = name
+             
+        if not isinstance(is_computer, bool):
+            raise TypeError("Is computer must be a boolean.")
+        else:
+            self.is_computer = is_computer
