@@ -45,6 +45,12 @@ class TestDice(unittest.TestCase):
         self.assertIsNotNone(results)
         unique_results = set(results)
         self.assertGreater(len(unique_results), 1)
+        
+    def test_roll_count_matches_results_count(self):
+        num_rolls = 10
+        results = [self.dice.roll() for _ in range(num_rolls)]
+        self.assertIsNotNone(results)
+        self.assertEqual(len(results), num_rolls)
             
     
         
