@@ -1,4 +1,6 @@
 import unittest
+from game.player import Player 
+
 
 class TestPlayer(unittest.TestCase):
 
