@@ -1,4 +1,5 @@
 import unittest
+from game.intelligence import Intelligence
 
 class TestIntelligence(unittest.TestCase):
 
