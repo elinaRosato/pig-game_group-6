@@ -39,5 +39,21 @@ class Intelligence:
         elif self.difficulty == "hard":
             return random.randint(2, 4)  # Choose 2, 3, or 4 turns
     
-    
+    def set_difficulty(self, difficulty):
+        """
+        Set the difficulty level.
+
+        Parameters:
+        - difficulty (str): The new difficulty level.
+
+        Raises:
+        - TypeError: If difficulty is not a string.
+        - ValueError: If difficulty is not one of the valid levels ("easy", "medium", "hard").
+        """
+        if not isinstance(difficulty, str):
+            raise TypeError("Difficulty level must be a string.")
+        if difficulty not in self.levels:
+            raise ValueError("Invalid difficulty level. Valid difficulty levels are 'easy', 'medium', or 'hard'.")
+        else:
+            self.difficulty = difficulty
     
