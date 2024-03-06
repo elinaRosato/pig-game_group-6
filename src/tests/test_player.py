@@ -99,3 +99,6 @@ class TestPlayer(unittest.TestCase):
         # Test case 2: Invalid new name (empty string)
         with self.assertRaises((ValueError)):
             player.change_name("")
+
+if __name__ == '__main__':
+    unittest.main()
