@@ -1,0 +1,8 @@
+# .pylintrc
+
+[pylint]
+# Set the maximum allowed line length
+max-line-length = 120
+
+ignore=test_*.py
+ignore-patterns=test_*.py
