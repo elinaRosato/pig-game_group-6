@@ -27,6 +27,12 @@ class TestDice(unittest.TestCase):
         result = self.dice.roll()
         self.assertIsNotNone(result)
         self.assertTrue(isinstance(result, int))
+        
+    def test_roll_upper_value_limit(self):
+        for _ in range(100):
+            result = self.dice.roll()
+            self.assertIsNotNone(result)
+            self.assertLessEqual(result, 6)
             
     
         
