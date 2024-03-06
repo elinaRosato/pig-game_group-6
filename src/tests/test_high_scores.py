@@ -48,3 +48,17 @@ class test_high_score(unittest.TestCase):
         """Test updating highscores for a new player."""
         self.highscore.update_highscores("Lena", 300)
         self.assertEqual(self.highscore.highscores["Lena"], [300])
+
+    #This tests updating the player name
+    def test_update_existing_player_name(self):
+        """Test updating player name for an existing player."""
+        self.highscore.highscores = {"Erik": [100, 150]}
+        self.highscore.update_player_name("Erik", "Erika")
+        self.assertIn("Erika", self.highscore.highscores)
+        self.assertNotIn("Erik", self.highscore.highscores)
+
+    #This tests updating a non-existing player name
+    def test_update_non_existing_player_name(self):
+        """Test updating player name for a non-existing player."""
+        with self.assertRaises(KeyError):
+            self.highscore.update_player_name("Lena", "Lasse")
