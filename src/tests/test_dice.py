@@ -1,10 +1,10 @@
 import unittest
-import dice
+from game.dice import Dice
 
 class TestDice(unittest.TestCase):
     
     def setUp(self):
-        self.dice = dice.Dice()
+        self.dice = Dice()
         
     def test_roll_result_not_null(self):
         result = self.dice.roll()
