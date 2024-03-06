@@ -48,3 +48,26 @@ class TestPlayer(unittest.TestCase):
         """
         with self.assertRaises((TypeError)):
             invalid_player = Player("Alice", 123)
+
+    # Change Name
+    def test_change_name_valid_new_name(self):
+        """
+        Test changing the name of a player with a valid new name.
+        """
+        player = Player("Bob")
+        player.change_name("Charlie")
+        self.assertEqual(player.name, "Charlie")
+    
+    def test_change_name_invalid_new_name(self):
+        """
+        Test changing the name of a player with an invalid new name and expect a TypeError or ValueError.
+        """
+        player = Player("Bob")
+
+        # Test case 1: Invalid new name (integer)
+        with self.assertRaises((TypeError)):
+            player.change_name(123)
+
+        # Test case 2: Invalid new name (empty string)
+        with self.assertRaises((ValueError)):
+            player.change_name("")
