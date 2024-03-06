@@ -81,3 +81,10 @@ class test_high_score(unittest.TestCase):
     def test_update_highscores_invalid_player_name(self):
         with self.assertRaises(TypeError):
             self.highscore.update_highscores(123, 100)
+
+    #This method tests updating the player name with an invalid name
+    def test_update_player_name_invalid_names(self):
+        with self.assertRaises(TypeError):
+            self.highscore.update_player_name(123, "Erika")
+        with self.assertRaises(TypeError):
+            self.highscore.update_player_name("Erik", 123)
