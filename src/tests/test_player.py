@@ -110,6 +110,10 @@ class TestPlayer(unittest.TestCase):
         # Test case 1: Invalid new name (integer)
         with self.assertRaises((TypeError)):
             player.change_name(123)
+        
+        # Test case 1: Invalid new name (boolean)
+        with self.assertRaises((TypeError)):
+            player.change_name(True)
 
         # Test case 2: Invalid new name (empty string)
         with self.assertRaises((ValueError)):
