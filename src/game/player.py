@@ -12,3 +12,11 @@ class Player:
             raise TypeError("Is computer must be a boolean.")
         else:
             self.is_computer = is_computer
+
+    def change_name(self, new_name):
+        if not isinstance(new_name, str):
+            raise TypeError("New name must be a string.")
+        elif len(new_name) == 0:
+            raise ValueError("New name must be a non-empty string.")
+        else:
+            self.name = new_name
