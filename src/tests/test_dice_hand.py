@@ -46,3 +46,11 @@ class TestDiceHand(unittest.TestCase):
     def test_roll_dice_invalid_input_false_boolean(self):
         with self.assertRaises(TypeError):
             self.dice_hand.roll_dice(False)
+            
+    def test_roll_dice_count_matches_result_count(self):
+        num_rolls = 100
+        rolls = self.dice_hand.roll_dice(num_rolls)
+        self.assertEqual(len(rolls), num_rolls)
+                     
+if __name__ == '__main__':
+    unittest.main()
