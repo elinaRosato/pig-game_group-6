@@ -52,6 +52,7 @@ class TestIntelligence(unittest.TestCase):
         """
         Test creating an Intelligence instance with an invalid difficulty value and expect a ValueError.
         """
+
         # Test case 1: Invalid difficulty type (empty string)
         with self.assertRaises(ValueError):
             intelligence_instance = Intelligence("")
@@ -60,7 +61,7 @@ class TestIntelligence(unittest.TestCase):
         with self.assertRaises(ValueError):
             intelligence_instance = Intelligence("difficult")
 
-    # Set difficulty with valid and invalid values
+    # Set difficulty method with valid and invalid values
     def test_set_difficulty_valid(self):
         """
         Test setting a valid difficulty.
@@ -74,6 +75,7 @@ class TestIntelligence(unittest.TestCase):
         Test setting an invalid difficulty type and expect a TypeError.
         """
         intelligence_instance = Intelligence()
+
         # Test case 1: Invalid difficulty type (integer)
         with self.assertRaises(TypeError):
             intelligence_instance.set_difficulty(123)
@@ -91,12 +93,39 @@ class TestIntelligence(unittest.TestCase):
         Test setting an invalid difficulty value and expect a ValueError.
         """
         intelligence_instance = Intelligence()
+
         # Test case 1: Invalid difficulty type (empty string)
         with self.assertRaises(ValueError):
             intelligence_instance.set_difficulty("")
+
         # Test case 2: Invalid difficulty type (invalid string)
         with self.assertRaises(ValueError):
             intelligence_instance.set_difficulty("difficult")
+    
+    # Choose turns method with valid and invalid values
+    def test_choose_turns_easy(self):
+        """
+        Test choosing turns for easy difficulty.
+        """
+        intelligence_instance = Intelligence("easy")
+        turns = intelligence_instance.choose_turns()
+        self.assertIn(turns, [1, 2])
+
+    def test_choose_turns_medium(self):
+        """
+        Test choosing turns for medium difficulty.
+        """
+        intelligence_instance = Intelligence("medium")
+        turns = intelligence_instance.choose_turns()
+        self.assertIn(turns, [1, 2, 3])
+
+    def test_choose_turns_hard(self):
+        """
+        Test choosing turns for hard difficulty.
+        """
+        intelligence_instance = Intelligence("hard")
+        turns = intelligence_instance.choose_turns()
+        self.assertIn(turns, [2, 3, 4])
 
 if __name__ == '__main__':
     unittest.main()
