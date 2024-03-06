@@ -40,6 +40,12 @@ class TestDice(unittest.TestCase):
             self.assertIsNotNone(result)
             self.assertGreaterEqual(result, 1)
             
+    def test_roll_ensure_all_dice_numbers_are_thrown(self):
+        results = [self.dice.roll() for _ in range(100)]
+        self.assertIsNotNone(results)
+        unique_results = set(results)
+        self.assertGreater(len(unique_results), 1)
+            
     
         
 if __name__ == '__main__':
