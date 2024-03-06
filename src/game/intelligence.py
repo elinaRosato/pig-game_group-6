@@ -25,4 +25,19 @@ class Intelligence:
         else:
             self.difficulty = difficulty
     
+    def choose_turns(self):
+        """
+        Choose the number of turns based on the difficulty level.
+
+        Returns:
+        - int: The chosen number of turns.
+        """
+        if self.difficulty == "easy":
+            return random.randint(1, 2)  # Choose 1 or 2 turns
+        elif self.difficulty == "medium":
+            return random.randint(1, 3)  # Choose 1, 2, or 3 turns
+        elif self.difficulty == "hard":
+            return random.randint(2, 4)  # Choose 2, 3, or 4 turns
+    
+    
     
