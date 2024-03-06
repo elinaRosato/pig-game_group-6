@@ -15,6 +15,15 @@ class TestDice(unittest.TestCase):
             result = self.dice.roll()
             self.assertIsNotNone(result)
             self.assertTrue(1 <= result <= 6)
+            
+     def test_roll_result_in_any_of_possible_output_values(self):
+        possible_values = [1, 2, 3, 4, 5, 6]
+        for _ in range(100):
+            result = self.dice.roll()
+            self.assertIsNotNone(result)
+            self.assertIn(result, possible_values)
+            
+    
         
 if __name__ == '__main__':
     unittest.main()
