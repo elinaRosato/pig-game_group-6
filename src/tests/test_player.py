@@ -27,7 +27,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(player.name, "Alice")
         self.assertFalse(player.is_computer)
 
-    #Invalid Player Initialization
+    #Invalid Player Initialization with an invalid player name
     def test_invalid_player_initialization_with_integer(self):
         """
         Test creating a player with an invalid name, in this case an integer, and expect a TypeError.
@@ -70,12 +70,27 @@ class TestPlayer(unittest.TestCase):
         with self.assertRaises((ValueError)):
             invalid_player = Player(None)
 
-    def test_invalid_player_initialization_with_invalid_is_computer(self):
+    #Invalid Player Initialization with an invalid is_computer type
+    def test_invalid_player_initialization_with_invalid_is_computer_integer(self):
         """
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         """
         with self.assertRaises((TypeError)):
             invalid_player = Player("Alice", 123)
+
+    def test_invalid_player_initialization_with_invalid_is_computer_float(self):
+        """
+        Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
+        """
+        with self.assertRaises((TypeError)):
+            invalid_player = Player("Alice", 1.23)
+    
+    def test_invalid_player_initialization_with_invalid_is_computer_string(self):
+        """
+        Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
+        """
+        with self.assertRaises((TypeError)):
+            invalid_player = Player("Alice", "yes")
 
     # Change Name
     def test_change_name_valid_new_name(self):
