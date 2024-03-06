@@ -35,12 +35,40 @@ class TestPlayer(unittest.TestCase):
         with self.assertRaises((TypeError)):
             invalid_player = Player(123)
     
+    def test_invalid_player_initialization_with_float(self):
+        """
+        Test creating a player with an invalid name, in this case a float, and expect a TypeError.
+        """
+        with self.assertRaises((TypeError)):
+            invalid_player = Player(1.23)
+        
+    def test_invalid_player_initialization_with_boolean(self):
+        """
+        Test creating a player with an invalid name, in this case a boolean, and expect a TypeError.
+        """
+        with self.assertRaises((TypeError)):
+            invalid_player = Player(True)
+        
+    def test_invalid_player_initialization_with_array(self):
+        """
+        Test creating a player with an invalid name, in this case an array, and expect a TypeError.
+        """
+        with self.assertRaises((TypeError)):
+            invalid_player = Player(["Alice", "Bob"])
+
     def test_invalid_player_initialization_with_empty_string(self):
         """
         Test creating a player with an invalid name, in this case an empty string, and expect a ValueError.
         """
         with self.assertRaises((ValueError)):
             invalid_player = Player("")
+
+    def test_invalid_player_initialization_with_None(self):
+        """
+        Test creating a player with an invalid name, in this case None, and expect a ValueError.
+        """
+        with self.assertRaises((ValueError)):
+            invalid_player = Player(None)
 
     def test_invalid_player_initialization_with_invalid_is_computer(self):
         """
