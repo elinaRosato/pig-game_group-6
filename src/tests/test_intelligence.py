@@ -36,15 +36,15 @@ class TestIntelligence(unittest.TestCase):
         """
         Test creating an Intelligence instance with an invalid difficulty type and expect a TypeError.
         """
-        # Test case 1: Invalid level type (integer)
+        # Test case 1: Invalid difficulty type (integer)
         with self.assertRaises(TypeError):
             intelligence_instance = Intelligence(123)
 
-        # Test case 2: Invalid level type (float)
+        # Test case 2: Invalid difficulty type (float)
         with self.assertRaises(TypeError):
             intelligence_instance = Intelligence(1.23)
         
-        # Test case 3: Invalid level type (boolean)
+        # Test case 3: Invalid difficulty type (boolean)
         with self.assertRaises(TypeError):
             intelligence_instance = Intelligence(False)
 
@@ -52,13 +52,51 @@ class TestIntelligence(unittest.TestCase):
         """
         Test creating an Intelligence instance with an invalid difficulty value and expect a ValueError.
         """
-        # Test case 1: Invalid level type (empty string)
+        # Test case 1: Invalid difficulty type (empty string)
         with self.assertRaises(ValueError):
             intelligence_instance = Intelligence("")
 
-        # Test case 2: Invalid level type (invalid string)
+        # Test case 2: Invalid difficulty type (invalid string)
         with self.assertRaises(ValueError):
             intelligence_instance = Intelligence("difficult")
+
+    # Set difficulty with valid and invalid values
+    def test_set_difficulty_valid(self):
+        """
+        Test setting a valid difficulty.
+        """
+        intelligence_instance = Intelligence()
+        intelligence_instance.set_difficulty("hard")
+        self.assertEqual(intelligence_instance.difficulty, "hard")
+
+    def test_set_difficulty_invalid_type(self):
+        """
+        Test setting an invalid difficulty type and expect a TypeError.
+        """
+        intelligence_instance = Intelligence()
+        # Test case 1: Invalid difficulty type (integer)
+        with self.assertRaises(TypeError):
+            intelligence_instance.set_difficulty(123)
+
+        # Test case 2: Invalid difficulty type (float)
+        with self.assertRaises(TypeError):
+            intelligence_instance.set_difficulty(1.23)
+
+        # Test case 3: Invalid difficulty type (boolean)
+        with self.assertRaises(TypeError):
+            intelligence_instance.set_difficulty(True)
+
+    def test_set_difficulty_invalid_value(self):
+        """
+        Test setting an invalid difficulty value and expect a ValueError.
+        """
+        intelligence_instance = Intelligence()
+        # Test case 1: Invalid difficulty type (empty string)
+        with self.assertRaises(ValueError):
+            intelligence_instance.set_difficulty("")
+        # Test case 2: Invalid difficulty type (invalid string)
+        with self.assertRaises(ValueError):
+            intelligence_instance.set_difficulty("difficult")
 
 if __name__ == '__main__':
     unittest.main()
