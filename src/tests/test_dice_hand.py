@@ -1,10 +1,10 @@
 import unittest
-import dicehand
+import dice_hand
 
 class TestDiceHand(unittest.TestCase):
 
     def setUp(self):
-        self.dice_hand = dicehand.DiceHand()
+        self.dice_hand = dice_hand.DiceHand()
         
     def test_roll_dice_invalid_input_zero(self):
         with self.assertRaises(ValueError):
