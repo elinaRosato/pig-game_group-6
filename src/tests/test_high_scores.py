@@ -42,3 +42,9 @@ class test_high_score(unittest.TestCase):
         self.highscore.highscores = {"Erik": [100, 150]}
         self.highscore.update_highscores("Erik", 200)
         self.assertEqual(self.highscore.highscores["Erik"], [100, 150, 200])
+
+    #This updates the highscore of a new player
+    def test_update_highscores_new_player(self):
+        """Test updating highscores for a new player."""
+        self.highscore.update_highscores("Lena", 300)
+        self.assertEqual(self.highscore.highscores["Lena"], [300])
