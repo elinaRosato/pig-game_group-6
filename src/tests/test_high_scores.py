@@ -75,3 +75,9 @@ class test_high_score(unittest.TestCase):
         """Test updating player name with an invalid old name."""
         with self.assertRaises(KeyError):
             self.highscore.update_player_name("Olof", "Olle")
+
+    #This tests updating the highscore with an invalid input
+    def test_update_highscores_invalid_score(self):
+        """Test updating highscores with an invalid score."""
+        with self.assertRaises(TypeError):
+            self.highscore.update_highscores("Erik", "invalid_score")
