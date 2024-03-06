@@ -1,11 +1,11 @@
 import unittest
 import random
-from game.dice import Dice
+import dice
 
 class TestDice(unittest.TestCase):
     
     def setUp(self):
-        self.dice = Dice()
+        self.dice = dice.Dice()
         
     def test_roll_result_not_null(self):
         result = self.dice.roll()
