@@ -52,6 +52,14 @@ class TestDice(unittest.TestCase):
         self.assertIsNotNone(results)
         self.assertEqual(len(results), num_rolls)
             
+
+    def test_roll_numbers_are_uniformly_represented(self):
+        num_rolls = 100
+        results = [self.dice.roll() for _ in range(num_rolls)]
+        self.assertIsNotNone(results)
+        for value in range(1, 7):
+            occurrence = results.count(value)
+            self.assertLessEqual(occurrence, num_rolls * 0.5)
     
         
 if __name__ == '__main__':
