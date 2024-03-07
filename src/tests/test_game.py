@@ -41,6 +41,18 @@ class TestGame(unittest.TestCase):
             self.game.change_player_name()
         
         self.assertEqual(self.game.player1.name, 'Peter')
+        
+    def test_set_computer_opponent_with_valid_difficulty(self):
+        with patch('builtins.input', side_effect=['easy']):
+            self.game.set_computer_opponent()
+        self.assertTrue(self.game.player2.is_computer)
+        self.assertEqual(self.game.intelligence.difficulty, ['easy', 'medium', 'hard'])
+
+    def test_set_human_opponent(self):
+        with patch('builtins.input', return_value='Benjamin'):
+            self.game.set_human_opponent()
+        self.assertEqual(self.game.player2.name, 'Benjamin')
+    
 
 if __name__ == '__main__':
     unittest.main()
