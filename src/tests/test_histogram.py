@@ -44,6 +44,11 @@ class TestHistogram(unittest.TestCase):
         """
         Test adding a roll with an invalid value and expect a ValueError.
         """
+        # Test case 1: Roll value below the valid range
+        with self.assertRaises(ValueError):
+            self.histogram.add_roll(0)
+
+        # Test case 1: Roll value below the valid range
         with self.assertRaises(ValueError):
             self.histogram.add_roll(7)
 
