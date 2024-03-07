@@ -67,6 +67,26 @@ class TestHistogram(unittest.TestCase):
         expected_output = "Dice Roll Histogram:\n1: \n2: *\n3: \n4: *\n5: \n6: "
         self.histogram.display()
         mock_print.assert_called_with(expected_output)
+    
+    @patch('builtins.print')
+    def test_display(self, mock_print):
+        """
+        Test displaying the histogram with no rolls.
+        """
+        expected_output = "Dice Roll Histogram:\n1: \n2: \n3: \n4: \n5: \n6: "
+        self.histogram.display()
+        mock_print.assert_called_with(expected_output)
+    
+    @patch('builtins.print')
+    def test_display(self, mock_print):
+        """
+        Test displaying the histogram with reapeted rolls.
+        """
+        self.histogram.add_roll(2)
+        self.histogram.add_roll(2)
+        expected_output = "Dice Roll Histogram:\n1: \n2: **\n3: \n4: \n5: \n6: "
+        self.histogram.display()
+        mock_print.assert_called_with(expected_output)
 
 if __name__ == '__main__':
     unittest.main()
