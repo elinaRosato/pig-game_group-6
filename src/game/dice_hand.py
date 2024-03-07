@@ -1,6 +1,9 @@
 from dice import Dice
 
 class DiceHand:
+    """
+    This class throws several dices in the same round.
+    """
 
     def __init__(self):
         self.dice = Dice()
