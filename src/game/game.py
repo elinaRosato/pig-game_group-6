@@ -27,6 +27,23 @@ class Game:
         self.player2 = player.Player("Player2")
         self.intelligence = intelligence.Intelligence()
         self.histogram = histogram.Histogram()
+    
+    def play(self):
+        """
+        Plays a round of Pig.
+
+        This method manages the flow of the game, including player setup, rounds, and determining the winner.
+        """
+        print("Welcome to Pig! The Hog variant")
+        while True:
+            self.get_player_name()
+            self.change_player_name()
+            self.set_opponent()
+            self.play_round(self.player1, self.player2)
+            another_round = self.play_again()
+            if not another_round:
+                print("Thanks for playing!")
+                break
 
 
 if __name__ == "__main__":
