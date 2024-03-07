@@ -46,3 +46,18 @@ class HighScore:
         else:
             self.highscores[player_name] = [score]
         self.save_highscores()
+
+    #This method updates the player name, or creates one if it doesn´t exist already
+    #It also uses error handling
+    def update_player_name(self, old_name, new_name):
+        if not isinstance(old_name, str) or not isinstance(new_name, str):
+            raise TypeError("Player names must be strings.")
+        
+        if new_name in self.highscores:
+            raise KeyError("New player name already used by other player.")
+        
+        if old_name not in self.highscores:
+            raise KeyError("Old player name not found.")
+        
+        self.highscores[new_name] = self.highscores.pop(old_name)
+        self.save_highscores()
