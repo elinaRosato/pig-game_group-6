@@ -89,7 +89,13 @@ We can alternatively also add the repository by using the Visual Studio Code int
 
 The repository and the .zip file include the source code that contains the Python files for executing the game and also other files for testing and executing other functionalities.
 
-At the root folder `pig-game_group-6` open a new terminal and create a virtual environment with this command:
+At the root folder `pig-game_group-6` open a new terminal.
+
+If you use `python3`, you need to open the file called makefile and update this line at the beginning,by replacing `python` with `python3`, otherwise your `make` commands will not work:
+
+`PYTHON ?= python # python3 py`
+
+Now we create a virtual environment with this command:
 
     $ make venv
 

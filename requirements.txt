@@ -1,10 +1,10 @@
 # Code analysis
 bandit
-#cohesion
+# cohesion
 flake8==7.0.0
 flake8-docstrings==1.7.0
 flake8-polyfill==1.0.2
-#metrics.pylint
+# metrics.pylint
 pylint==3.1.0
 radon
 
@@ -18,3 +18,7 @@ sphinx-rtd-theme # for ReadTheDocs local build
 
 # Unit test and coverage
 coverage
+
+# fix for missing distutils when generating documentation with pdoc:
+# https://stackoverflow.com/questions/69919970/no-module-named-distutils-but-distutils-installed
+setuptools 
