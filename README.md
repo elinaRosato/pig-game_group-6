@@ -47,9 +47,14 @@ If you use python3, you need to update the file called makefile and replace `pyt
 
 ### Step 3:
 Create and activate a virtual environment by running the comands:
+```python
+def hello_world():
+print("Hello, World!")
+```
     ```make venv
     . .venv/bin/activate #for Mac OS or 
-    . .venv/Scripts/activate #for Windows```
+    . .venv/Scripts/activate #for Windows
+    ```
 
 Notice that the command line will start with a `(.venv)` after activation.
 
