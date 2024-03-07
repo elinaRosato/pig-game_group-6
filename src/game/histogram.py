@@ -32,3 +32,13 @@ class Histogram:
         if roll < 1 or roll > 6:
             raise ValueError("Roll must be an integer within the range [1, 6].")
         self.counts[roll] += 1
+    
+    def display(self):
+        """
+        Displays the dice roll histogram.
+
+        Prints the count of each dice roll represented by '*' characters.
+        """
+        print("Dice Roll Histogram:")
+        for roll, count in self.counts.items():
+            print(f"{roll}: {'*' * count}")
