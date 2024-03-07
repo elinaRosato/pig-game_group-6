@@ -1,7 +1,9 @@
 import random
 
 class Dice:
-    
+    """
+    Represents a dice for playing the game.
+    """
     def roll(self):
         
         """
