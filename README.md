@@ -26,50 +26,78 @@ This guide intends to help with the setup proces for being able to run the game 
   - How to install brew for Mac and Linux: https://brew.sh/
   - Chocolatey for Windows: https://docs.chocolatey.org/en-us/choco/setup
 - A computer with a Python interpreter installed version 3.3 or superior.
-  - To check if you have Python installed, open the terminal and execute the command `python --version` or `python3 --version`
-  - To install the latest version of Python with a package manager (Brew or Chocolatey) use `choco install python` or `brew install python`
+  - To check if you have Python installed, open the terminal and execute the command 
+```bash
+python --version
+python3 --version
+```
+  - To install the latest version of Python with a package manager (Brew or Chocolatey) use 
+```bash
+choco install python #for Windows
+brew install python #for Mac/Linux
+```
 - Git Bash, information found here: https://git-scm.com/downloads
 - Conection to Internet for downloading the source code
-- Make tool is usually already installed on Mac OS. If needed, intall with: `choco install make`for Windows or `brew install make for Mac OS`.
-- Graphviz package is needed to generate UML diagrams from our code. Install with: `choco install graphviz` or `brew install graphviz`
+- Make tool is usually already installed on Mac OS. If needed, intall with: 
+```bash
+choco install make #for Windows
+brew install make #for Mac/Linux
+```
+- Graphviz package is needed to generate UML diagrams from our code. Install with: 
+```bash
+choco install graphviz #for Windows
+brew install graphviz #for Mac/Linux
+```
 
 ## Installation
 To run the Pig Game, follow these steps:
 
 ### Step 1:
-Clone the repository to your local machine using the terminal provided by Git Bash: `git clone https://github.com/your-username/pig-game.git`
+Clone the repository to your local machine using the terminal provided by Git Bash: 
+```bash
+git clone https://github.com/your-username/pig-game.git
+```
 The repository and the .zip file include the source code that contains the Python files for executing the game and also other files for testing and executing other functionalities.
 
 ### Step 2: 
 Navigate to the project directory.
 At the root folder `pig-game_group-6` open a new terminal.
-If you use python3, you need to update the file called makefile and replace `python` with `python3` in the following line: `PYTHON ?= python # python3 py`
+If you use python3, you need to update the file called makefile and replace `python` with `python3` in the following line: 
+```bash
+PYTHON ?= python # python3 py
+```
 
 ### Step 3:
 Create and activate a virtual environment by running the comands:
-```python
-def hello_world():
-print("Hello, World!")
-```
 ```bash
-    make venv
-    . .venv/bin/activate #for Mac OS or 
-    . .venv/Scripts/activate #for Windows
+make venv
+. .venv/Scripts/activate #for Windows
+. .venv/bin/activate #for Mac/Linux
 ```
 
 Notice that the command line will start with a `(.venv)` after activation.
 
 ### Step 4:
 Install dependencies specified in the requirements.txt file by running the comand:
-`make install`
+```bash
+make install
+```
 
-To see installed dependencies, run: `make installed`
+To see installed dependencies, run: 
+```bash
+make installed
+```
 
-To exit the virtual enviroment, run: `deactivate`
+To exit the virtual enviroment, run: 
+```bash
+deactivate
+```
 
 ## Usage
 To play the Pig Game, execute the following command in the terminal:
-`make run`
+```bash
+make run
+```
 
 The class `game.py` is the entrypoint for our game.
 
@@ -99,17 +127,25 @@ The game implemented is called Pig. It is a dice game where there are several va
 
 ## How to generate Documentation from docsstrings and UML diagrams
 
-This functionality requires to have executed the command `make install` in our virtual environment and installed the Python modules from `requirements.txt`.
+This functionality requires to have executed the command 
+```bash
+make install
+```
+in our virtual environment and installed the Python modules from `requirements.txt`.
 
 In order to generate the documentation, we need to execute in the terminal the command:
-
-    $ make doc
+```bash
+make doc
+```
 
 This command will create a `.html` file in the `doc/api` folder for each Python class in `src/game`.
 
 The convention chosen for the docstrings comments in the classes is `pep257`. You can read more about it and find some examples at https://peps.python.org/pep-0257/ . This configuration can be changed in the file `.pylintrc`, but keep in mind that it will require updating the format of the existing comments so they are reflected in the output files.
 
-We can also generate UML diagrams from our classes in `src/game` by running the command: `make uml`
+We can also generate UML diagrams from our classes in `src/game` by running the command: 
+```bash
+make uml
+```
 
 After running it 2 new `.png` files called `classes.png` and `packages.png` will be created or overwritten in the folder `doc/uml`.
 
@@ -125,13 +161,23 @@ It is also important that any changes in the current implementation or new addit
 
 ## Good syntax and conventions with lint
 
-We can enforce some coding rules across all the files of our project by using linters. Linters are a type of tools that help identifying inconsistencies in the code by using rules. These rules are added to the files `.flake8` and `.pylintrc`, and you can run the command `$ make lint` to get a list of all the syntax problems in the code that match with those rules.
+We can enforce some coding rules across all the files of our project by using linters. Linters are a type of tools that help identifying inconsistencies in the code by using rules. These rules are added to the files `.flake8` and `.pylintrc`. To get a list of all the syntax problems in the code that match with those rules, run the command:
+```bash
+make lint
+```
 
 ## Running tests and generating the Test coverage report
 
-This functionality requires to have executed the command `$ make install` in our virtual environment and installed the Python modules from `requirements.txt`.
+This functionality requires to have executed the command 
+```bash
+make install
+```
+in our virtual environment and installed the Python modules from `requirements.txt`.
 
-We can execute in the terminal the command: `make test`
+We can execute in the terminal the command: 
+```bash
+make test
+```
 
 The results of the test coverage will get displayed on the terminal only if all the tests execute successfully without errors.
 
