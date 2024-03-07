@@ -51,7 +51,8 @@ Create and activate a virtual environment by running the comands:
 def hello_world():
 print("Hello, World!")
 ```
-    ```make venv
+    ```
+    make venv
     . .venv/bin/activate #for Mac OS or 
     . .venv/Scripts/activate #for Windows
     ```
