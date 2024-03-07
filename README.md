@@ -47,8 +47,9 @@ If you use python3, you need to update the file called makefile and replace `pyt
 
 ### Step 3:
 Create and activate a virtual environment by running the comands:
-    `make venv`
-    `. .venv/bin/activate` for Mac OS or `. .venv/Scripts/activate` for Windows.
+    ```make venv
+    . .venv/bin/activate #for Mac OS or 
+    . .venv/Scripts/activate #for Windows```
 
 Notice that the command line will start with a `(.venv)` after activation.
 
@@ -92,7 +93,7 @@ The game implemented is called Pig. It is a dice game where there are several va
 
 ## How to generate Documentation from docsstrings and UML diagrams
 
-This functionality requires to have executed the command `$ make install` in our virtual environment and installed the Python modules from `requirements.txt`.
+This functionality requires to have executed the command `make install` in our virtual environment and installed the Python modules from `requirements.txt`.
 
 In order to generate the documentation, we need to execute in the terminal the command:
 
