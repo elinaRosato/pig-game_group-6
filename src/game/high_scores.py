@@ -27,3 +27,7 @@ class HighScore:
             highscores = {}
         return highscores
 
+    #This method saves the highscores
+    def save_highscores(self):
+        with open(self.filename, "w") as file:
+            json.dump(self.highscores, file)
