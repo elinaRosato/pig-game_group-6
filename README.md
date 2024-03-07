@@ -11,6 +11,9 @@ This is a Python implementation of the classic dice game Pig. The game is design
 - [Usage](#usage)
 - [Rules of the game](#rules-of-the-game)
 - [How to generate Documentation from docsstrings and UML diagrams](#documentation)
+- [How to contribute to the project](#contribute)
+- [Good syntax and conventions with lint](#lint)
+- [Running tests and generating the Test coverage report](#tests-and-coverage)
 
 ## Introduction
 Pig Game is a text-based game where players take turns rolling a die to accumulate points. The objective is to reach a score of 100 before your opponent. The game can be played against the computer or with two players.
@@ -99,9 +102,7 @@ This command will create a `.html` file in the `doc/api` folder for each Python 
 
 The convention chosen for the docstrings comments in the classes is `pep257`. You can read more about it and find some examples at https://peps.python.org/pep-0257/ . This configuration can be changed in the file `.pylintrc`, but keep in mind that it will require updating the format of the existing comments so they are reflected in the output files.
 
-We can also generate UML diagrams from our classes in `src/game` by running the command:
-
-    $ make uml
+We can also generate UML diagrams from our classes in `src/game` by running the command: `make uml`
 
 After running it 2 new `.png` files called `classes.png` and `packages.png` will be created or overwritten in the folder `doc/uml`.
 
@@ -123,9 +124,7 @@ We can enforce some coding rules across all the files of our project by using li
 
 This functionality requires to have executed the command `$ make install` in our virtual environment and installed the Python modules from `requirements.txt`.
 
-We can execute in the terminal the command:
-
-    $ make test
+We can execute in the terminal the command: `make test`
 
 The results of the test coverage will get displayed on the terminal only if all the tests execute successfully without errors.
 
