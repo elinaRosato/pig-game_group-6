@@ -6,128 +6,66 @@ This is a Python implementation of the classic dice game Pig. The game is design
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Technical Requirements](#technical-requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Structure](#structure)
-- [Testing](#testing)
-- [Code Analysis](#code-analysis)
-- [Documentation](#documentation)
-- [License](#license)
+- [Rules of the game](#rules-of-the-game)
+- [How to generate Documentation from docsstrings and UML diagrams](#documentation)
 
 ## Introduction
 Pig Game is a text-based game where players take turns rolling a die to accumulate points. The objective is to reach a score of 100 before your opponent. The game can be played against the computer or with two players.
+
+This guide intends to help with the setup proces for being able to run the game and also provide some guidance about the funcionalities included.
+
+## Technical requirements
+
+- A package manager (brew for MacOS and Linux, or Chocolatey for Windows)
+  - How to install brew for Mac and Linux: https://brew.sh/
+  - Chocolatey for Windows: https://docs.chocolatey.org/en-us/choco/setup
+- A computer with a Python interpreter installed version 3.3 or superior.
+  - To check if you have Python installed, open the terminal and execute the command `python --version` or `python3 --version`
+  - To install the latest version of Python with a package manager (Brew or Chocolatey) use `choco install python` or `brew install python`
+- Git Bash, information found here: https://git-scm.com/downloads
+- Conection to Internet for downloading the source code
+- Make tool is usually already installed on Mac OS. If needed, intall with: `choco install make`for Windows or `brew install make for Mac OS`.
+- Graphviz package is needed to generate UML diagrams from our code. Install with: `choco install graphviz` or `brew install graphviz`
 
 ## Installation
 To run the Pig Game, follow these steps:
 
 ### Step 1:
-Clone the repository to your local machine: 
-git clone https://github.com/your-username/pig-game.git
+Clone the repository to your local machine using the terminal provided by Git Bash: `git clone https://github.com/your-username/pig-game.git`
+The repository and the .zip file include the source code that contains the Python files for executing the game and also other files for testing and executing other functionalities.
 
 ### Step 2: 
-Navigate to the project directory
+Navigate to the project directory.
+At the root folder `pig-game_group-6` open a new terminal.
+If you use python3, you need to update the file called makefile and replace `python` with `python3` in the following line: `PYTHON ?= python # python3 py`
 
 ### Step 3:
-Create and activate a virtual environment:
-make venv
-. .venv/bin/activate
+Create and activate a virtual environment by running the comands:
+    `make venv`
+    `. .venv/bin/activate` for Mac OS or `. .venv/Scripts/activate` for Windows.
+
+Notice that the command line will start with a `(.venv)` after activation.
 
 ### Step 4:
-Install dependencies
-make install
+Install dependencies specified in the requirements.txt file by running the comand:
+`make install`
+
+To see installed dependencies, run: `make installed`
+
+To exit the virtual enviroment, run: `deactivate`
 
 ## Usage
 To play the Pig Game, execute the following command in the terminal:
-make run
+`make run`
 
-## Structure
+The class `game.py` is the entrypoint for our game.
 
--------------------------------------------------------------------------------------
+You will first be promped to introduce your chosen name in the terminal and press Enter.
 
-
-# DRAFT 2:
-# Introduction
-
-This guide intends to help with the setup proces for being able to run the game and also provide some guidance about the funcionalities included.
-
-It is important to note that all the commands in this documentation file starting with `$` do not require that `$` when executing them. This `$` is only added for readibility in this documentation to point out that those words are meant to be executed in a terminal.
-
-## Technical requirements
-
-- A computer with a Python interpreter installed version 3.3 or superior.
-  - You can install the latest version of Python with a package manager (Brew or Chocolatey)
-- A package manager (brew for MacOS and Linux or Chocolatey for Windows)
-  - How to install brew for Mac and Linux: https://brew.sh/
-  - Chocolatey for Windows: https://docs.chocolatey.org/en-us/choco/setup
-- We need also to have installed Git Bash: https://git-scm.com/downloads
-- Conection to Internet for downloading the source code
-
-## Required tools to install with our Package Manager
-
-- Python version 3 (if not already installed in the computer). You can check if you have Python installed by opening a terminal and executing the command `$ python --version` or `$ python3 --version`
-
-  - We can use `$ choco install python` or `$ brew install python`
-  - On Windows we should also check that the python command is available on the terminal. It may require some restart of the machine. If after this when checking the installed version the `python` command (or `python3`) is not recognized, we need to execute in a PowerShell terminal opened with Administrator rights this command:
-
-    $ [System.Environment]::SetEnvironmentVariable("PATH", $Env:Path + ";C:\Python312", "Machine")
-
-  In that command we would replace `C:\Python312` with the directory in our hard disk where python was installed. You may need to restart the computer or open a new PowerShell terminal to check if the command is available.
-
-- We need to install the `make` tool for being able to use all the commands defined in the `makefile`. This tool is usually already installed on Mac OS, but we can install it also on Windows with Chocolatey, by using this command:
-  `$ choco install make`. In case you use Mac Os and this tool is not available in the terminal, you can install it with `$ brew install make`.
-
-- We need also to install in our computer the tool `graphviz` in order to generate UML diagrams from our code.
-  - We can use `$ choco install graphviz` or `$ brew install graphviz`
-
-## Setting up the virtual environment
-
-Once we have installed all the required tools and programs in our PC, we need first to clone the repository by using the terminal provided by Git Bash:
-
-    $ git clone https://github.com/elinaRosato/pig-game_group-6.git
-
-We can alternatively also add the repository by using the Visual Studio Code interface or unzip the file uploaded to Canvas.
-
-The repository and the .zip file include the source code that contains the Python files for executing the game and also other files for testing and executing other functionalities.
-
-At the root folder `pig-game_group-6` open a new terminal.
-
-If you use `python3`, you need to open the file called makefile and update this line at the beginning,by replacing `python` with `python3`, otherwise your `make` commands will not work:
-
-`PYTHON ?= python # python3 py`
-
-Now we create a virtual environment with this command:
-
-    $ make venv
-
-Once created we need to activate it, so we use this command:
-
-Windows:
-
-     $ . .venv/Scripts/activate     # (Note that there is only 1 space between the 2 dots)
-
-MacOs:
-
-    $ . .venv/bin/activate     # (here there is also 1 space between the 2 dots)
-
-The first thing we will notice after activating the virtual environment will be that the command line will start with a `(.venv)`.
-
-Now we install all the modules specified in the requirements.txt file with the command:
-
-     $ make install
-
-You can see the tools installed by executing afterwards the command
-
-     $ make installed
-
-If you type on the terminal `$ deactivate` then you exit from the virtual environment.
-
-## How to play the game
-
-The class `game.py` is the entrypoint for our game. We need to execute the command in our terminal to start playing:
-
-    $ python .\src\game\game.py        # Or python3
-
-We will first need to introduce our chosen name in the terminal and press Enter, and if we have played before we will also be able to update it by giving first our current name and later a new one.
+If you have played before you will also be able to update it by giving first our current name and later a new one.
 
 Next you will be asked if you want to play against the computer or against another player.
 
