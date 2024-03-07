@@ -2,6 +2,8 @@ import unittest
 from unittest.mock import patch
 from game import Game
 import os
+import sys
+from io import StringIO
 
 class TestGame(unittest.TestCase):
         
@@ -81,6 +83,45 @@ class TestGame(unittest.TestCase):
         with patch('builtins.input', return_value='Benjamin'):
             self.game.set_human_opponent()
         self.assertEqual(self.game.player2.name, 'Benjamin')
+        
+    def test_play_round_2_human_players(self):
+        # Prepare predefined inputs for player decision
+        player1_inputs = ['roll', '1', 'hold']
+        player2_inputs = ['roll', '1', 'cheat']
+
+        # Redirect stdout to a StringIO object to capture printed output
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        # Set up patch for builtins.input
+        with patch('builtins.input', side_effect=player1_inputs + player2_inputs):
+            # Test playing a round
+            self.game.player1.name = "Player1"
+            self.game.player2.name = "Player2"
+            self.game.play_round(self.game.player1, self.game.player2)
+
+        # Reset stdout
+        sys.stdout = sys.__stdout__
+
+        # Get the captured output
+        output = captured_output.getvalue()
+
+        # Assert that the output contains expected messages
+        self.assertIn("Player1's turn:", output)
+        self.assertIn("Player1 rolled:", output)
+
+        if "Player1 rolled a 1!" in output:
+              self.assertIn("Turn over.", output)
+        else:
+            self.assertIn("Player1's score:", output)
+            self.assertIn("Player2's turn:", output)
+            if "Player2 rolled a 1!" in output:
+                self.assertIn("Turn over.", output)
+            else:
+                self.assertIn("Player2 rolled:", output)
+                self.assertIn("Cheat activated! Setting your score to 100.", output)
+                self.assertIn("score: 100", output)
+                self.assertIn("You win!", output)
     
 
 if __name__ == '__main__':
