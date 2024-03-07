@@ -44,6 +44,22 @@ class Game:
             if not another_round:
                 print("Thanks for playing!")
                 break
+    
+    def get_player_name(self):
+        """
+        Get the player's name.
+
+        Loops until a non-empty name is entered.
+        Sets the entered name as the player1's name using change_name method.
+        """
+        while True:
+            player_name = input("Enter your name: ")
+            if player_name.strip():
+                self.player1.change_name(player_name)
+                break
+            else:
+                print("Please enter a non-empty name.")
+
 
 
 if __name__ == "__main__":
