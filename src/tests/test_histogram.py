@@ -39,6 +39,10 @@ class TestHistogram(unittest.TestCase):
         # Test case 3: Invalid roll (bool)
         with self.assertRaises(TypeError):
             self.histogram.add_roll(False)
+        
+        # Test case 3: Invalid roll (None)
+        with self.assertRaises(TypeError):
+            self.histogram.add_roll(None)
     
     def test_add_roll_invalid_value(self):
         """
