@@ -51,11 +51,11 @@ Create and activate a virtual environment by running the comands:
 def hello_world():
 print("Hello, World!")
 ```
-    ```
+```bash
     make venv
     . .venv/bin/activate #for Mac OS or 
     . .venv/Scripts/activate #for Windows
-    ```
+```
 
 Notice that the command line will start with a `(.venv)` after activation.
 
