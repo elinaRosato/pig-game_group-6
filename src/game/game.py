@@ -59,6 +59,26 @@ class Game:
                 break
             else:
                 print("Please enter a non-empty name.")
+    
+    def change_player_name(self):
+        """
+        Change the player's name.
+
+        Asks the player if they want to change their name.
+        If 'yes', loops until a non-empty new name is entered.
+        Sets the new name as player1's name using change_name method.
+        Updates the high score with the player's new name.
+        """
+        change_name = input("Do you want to change your name? (yes/no): ")
+        if change_name.lower() == "yes":
+            while True:
+                new_name = input("Enter your new name: ")
+                if len(new_name.strip()) > 0:
+                    self.player1.change_name(new_name)
+                    self.high_score.update_player_name(self.player1.name, new_name)
+                    break
+                else:
+                    print("Please enter a non-empty name.")
 
 
 
