@@ -31,3 +31,18 @@ class HighScore:
     def save_highscores(self):
         with open(self.filename, "w") as file:
             json.dump(self.highscores, file)
+
+    #This method updates the highscores and throws exceptions for errors
+    def update_highscores(self, player_name, score):
+        if not isinstance(player_name, str):
+            raise TypeError("Player name must be a string.")
+        if not isinstance(score, int):
+            raise TypeError("Score must be an integer.")
+        if score < 0:
+            raise ValueError("Score must be a non-negative integer.")
+
+        if player_name in self.highscores:
+            self.highscores[player_name].append(score)
+        else:
+            self.highscores[player_name] = [score]
+        self.save_highscores()
