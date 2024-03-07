@@ -122,6 +122,19 @@ class TestGame(unittest.TestCase):
                 self.assertIn("Cheat activated! Setting your score to 100.", output)
                 self.assertIn("score: 100", output)
                 self.assertIn("You win!", output)
+        
+    # Choosing to cheat against the computer
+    def test_play_cheat_against_computer(self):
+        """
+        Test playing the game against the computer, choosing to cheat, and confirming the game ends.
+        """
+        with patch('builtins.input', side_effect=['Veronica', 'no', 'yes', 'medium', 'cheat', 'no']):
+            with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+                self.game.play()
+                output = mock_stdout.getvalue()
+                self.assertIn("Welcome to Pig! The Hog variant", output)
+                self.assertIn("Cheat activated! Setting your score to 100.", output)
+                self.assertIn("Thanks for playing!", output)
     
 
 if __name__ == '__main__':
