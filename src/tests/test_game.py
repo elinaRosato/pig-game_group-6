@@ -10,8 +10,8 @@ class TestGame(unittest.TestCase):
     def setUp(self):
         self.game = Game()
         
+    #We need this to reset the file of highscores and avoid conflicts with existing names from previous test executions.
     def tearDown(self):
-        #We need this to reset the file of highscores and avoid conflicts with existing names from previous test executions.
         filename = "highscores.json"
         if os.path.exists(filename):
             os.remove(filename)    
@@ -193,6 +193,39 @@ class TestGame(unittest.TestCase):
             with patch.object(self.game.dice_hand, 'roll_dice', return_value=[1,3]):
                 score = self.game.take_turn(self.game.player2)
         self.assertEqual(score, 0)
+
+    # Play again
+    @patch('builtins.input', side_effect=['yes'])
+    def test_play_again_yes(self):
+        """
+        Test that play_again returns True when the player enters 'yes'.
+        """
+        result = self.game.play_again()
+        self.assertTrue(result)
+
+    @patch('builtins.input', side_effect=['no'])
+    def test_play_again_no(self):
+        """
+        Test that play_again returns False when the player enters 'no'.
+        """
+        result = self.game.play_again()
+        self.assertFalse(result)
+
+    @patch('builtins.input', side_effect=['invalid', 'yes'])
+    def test_play_again_invalid_then_yes(self):
+        """
+        Test that play_again handles invalid input and returns True when the player eventually enters 'yes'.
+        """
+        result = self.game.play_again()
+        self.assertTrue(result)
+
+    @patch('builtins.input', side_effect=['invalid', 'another_invalid', 'no'])
+    def test_play_again_invalid_then_another_invalid_then_no(self):
+        """
+        Test that play_again handles multiple invalid inputs and returns False when the player eventually enters 'no'.
+        """
+        result = self.game.play_again()
+        self.assertFalse(result)
    
         
         

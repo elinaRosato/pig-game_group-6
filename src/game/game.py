@@ -250,8 +250,10 @@ class Game:
         while True:
             play_again = input("Do you want to play again? (yes/no): ").lower()
             if play_again == "yes":
+                print("Loading a new round...")
                 return True
             elif play_again == "no":
+                print("See you soon!")
                 return False
             else:
                 print("Please enter a valid option (yes/no).")
