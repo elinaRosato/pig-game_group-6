@@ -8,7 +8,7 @@ PYTHON ?= python # python3 py
 # Print out colored action message
 MESSAGE = printf "\033[32;01m---> $(1)\033[0m\n"
 
-all:
+all: version venv install lint codestyle test doc metrics bandit
 
 
 # ---------------------------------------------------------
