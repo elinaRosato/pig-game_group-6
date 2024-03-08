@@ -62,7 +62,7 @@ clean-all: clean clean-doc
 #
 pylint:
 	@$(call MESSAGE,$@)
-	- $(PYTHON) -m pylint src/**/*.py
+	- $(PYTHON) -m pylint src/*.py
 
 flake8:
 	@$(call MESSAGE,$@)
@@ -76,7 +76,7 @@ lint: flake8 pylint
 #
 black:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m black src/ test/
+	 $(PYTHON) -m black src/*.py
 
 codestyle: black
 
@@ -86,11 +86,11 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	$(PYTHON) -m unittest discover -s src/game -p "test_*.py"
+	$(PYTHON) -m unittest discover -s src -p "test_*.py"
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover -s src/game -p "test_*.py"
+	coverage run -m unittest discover -s src -p "test_*.py"
 	coverage html
 	coverage report -m
 
@@ -103,11 +103,11 @@ test: coverage
 
 pdoc:
 	@$(call MESSAGE,$@)
-	pdoc --force --html --output-dir doc/api src/game/*.py
+	pdoc --force --html --output-dir doc/api src/*.py
 
 pyreverse:
 	@$(call MESSAGE,$@)
-	pyreverse src/game
+	pyreverse src
 	dot -Tpng classes.dot -o doc/uml/classes.png
 	dot -Tpng packages.dot -o doc/uml/packages.png
 
@@ -156,4 +156,4 @@ bandit:
 .PHONY: run
 
 run:
-	python3 src/game/game.py 
+	python3 src/game.py 
