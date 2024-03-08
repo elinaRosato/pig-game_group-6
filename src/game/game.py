@@ -169,6 +169,77 @@ class Game:
                         self.high_score.update_highscores(player2.name, player2_score)
                         break;
 
+    def take_turn(self, player):
+        """
+        Process a player's turn.
+
+        Parameters:
+        - player (Player): The current player taking the turn.
+
+        Returns:
+        int: The score earned during the turn.
+
+        If the player is a computer, the method determines the number of turns based on the intelligence level.
+        If the player is a human, it prompts the player for their decision, including rolling the dice, holding,
+        cheating, displaying the histogram, quitting the game, or restarting.
+
+        For human players:
+        - 'roll': The player rolls a specified number of dice, and the scores are calculated.
+        - 'hold': The player decides to hold their current score.
+        - 'cheat': The player activates cheat mode, setting their score to 100.
+        - 'histogram': The player displays the current histogram of dice rolls.
+        - 'quit': The player quits the game.
+        - 'restart': The player restarts the game.
+
+        If a 1 is rolled during the turn, the turn ends, and the score for that turn is 0.
+        """
+        current_score = 0
+        while True:
+            if player.is_computer:
+                turns = min(self.intelligence.choose_turns(), 5)  # Computer takes up to 5 dice
+                rolls = self.dice_hand.roll_dice(turns)
+                for roll in rolls:
+                    self.histogram.add_roll(roll)
+                    print(f"{player.name} rolled: {roll}")
+                    if roll == 1:
+                        print(f"{player.name} rolled a 1! Turn over.")
+                        return 0
+                    current_score += roll
+                return current_score
+            else:
+                decision = input("Roll, hold, cheat, histogram, quit or restart? (roll/hold/cheat/histogram/quit/restart): ")
+                if decision.lower() == "roll":
+                    while True:
+                        num_dice_input = input("Enter the number of dice to roll: ")
+                        if num_dice_input.isdigit():
+                            num_dice = int(num_dice_input)
+                            rolls = self.dice_hand.roll_dice(num_dice)
+                            for roll in rolls:
+                                self.histogram.add_roll(roll)
+                                print(f"{player.name} rolled: {roll}")
+                                if roll == 1:
+                                    print(f"{player.name} rolled a 1! Turn over.")
+                                    return 0
+                                current_score += roll
+                            break
+                        else:
+                            print("Invalid input. Please enter a valid number.")
+                elif decision.lower() == "hold":
+                    return current_score
+                elif decision.lower() == "cheat":
+                    print("Cheat activated! Setting your score to 100.")
+                    return 100
+                elif decision.lower() == "histogram":
+                    self.histogram.display()
+                elif decision.lower() == "quit":
+                    print("Quitting the game.")
+                    exit()
+                elif decision.lower() == "restart":
+                    print("Restarting the game.")
+                    self.play()
+                else:
+                    print("Invalid input. Please enter 'roll' to roll, 'hold' to hold, 'cheat' to activate cheat mode, 'histogram' to display the histogram, 'quit' to quit, or 'restart' to restart the game.")
+
 
 
 if __name__ == "__main__":
