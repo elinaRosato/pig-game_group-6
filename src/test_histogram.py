@@ -1,6 +1,8 @@
+import sys
+import io
 import unittest
-from unittest.mock import patch
 from game import Histogram
+
 
 class TestHistogram(unittest.TestCase):
 
@@ -55,33 +57,17 @@ class TestHistogram(unittest.TestCase):
         # Test case 1: Roll value below the valid range
         with self.assertRaises(ValueError):
             self.histogram.add_roll(7)
-    """
-    # Display
-    @patch('builtins.print')
-    def test_display(self, mock_print):
-        #Test displaying the histogram.
-        self.histogram.add_roll(2)
-        self.histogram.add_roll(4)
-        expected_output = "Dice Roll Histogram:\n1: \n2: *\n3: \n4: *\n5: \n6: "
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
     
-    @patch('builtins.print')
-    def test_display(self, mock_print):
-        #Test displaying the histogram with no rolls.
-        expected_output = "Dice Roll Histogram:\n1: \n2: \n3: \n4: \n5: \n6: "
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
-    
-    @patch('builtins.print')
-    def test_display(self, mock_print):
-         #Test displaying the histogram with reapeted rolls.
+    def test_display_output(self):
+        """Test if display method prints the histogram correctly."""
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        self.histogram.add_roll(1)
         self.histogram.add_roll(2)
-        self.histogram.add_roll(2)
-        expected_output = "Dice Roll Histogram:\n1: \n2: **\n3: \n4: \n5: \n6: "
         self.histogram.display()
-        mock_print.assert_called_with(expected_output)
-
-    """
+        sys.stdout = sys.__stdout__
+        expected_output = "Dice Roll Histogram:\n1: *\n2: *\n3: \n4: \n5: \n6: \n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
+  
 if __name__ == '__main__':
     unittest.main()
