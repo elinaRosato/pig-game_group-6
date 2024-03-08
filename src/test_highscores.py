@@ -1,6 +1,6 @@
 import unittest
 import os
-from game.highscores import highscore
+from highscores import highscore
 
 
 class test_high_score(unittest.TestCase):
