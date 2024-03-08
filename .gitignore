@@ -2,7 +2,6 @@
 .coverage
 .venv/
 __pycache__
-htmlcov/
 *.pyc
-doc/
 build/
+*.dot

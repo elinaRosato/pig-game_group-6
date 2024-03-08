@@ -1,10 +1,10 @@
 import unittest
-import dice_hand
+import dicehand
 
 class TestDiceHand(unittest.TestCase):
 
     def setUp(self):
-        self.dice_hand = dice_hand.DiceHand()
+        self.dice_hand = dicehand.DiceHand()
         
     def test_roll_dice_invalid_input_zero(self):
         """Test if rolling the dice with zero as an integer input raises ValueError."""

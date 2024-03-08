@@ -1,6 +1,6 @@
 import unittest
 import os
-from highscores import highscore
+from highscores import HighScore
 
 
 class test_high_score(unittest.TestCase):
@@ -8,7 +8,7 @@ class test_high_score(unittest.TestCase):
     # to be used by the other methods
     def setUp(self):
         self.filename = "test_highscores.json"
-        self.highscore = highscore.HighScore(self.filename)
+        self.highscore = HighScore(self.filename)
 
     #This method cleans up the temporary file resources after
     #launching the meethods so they don´t interfere with eachother

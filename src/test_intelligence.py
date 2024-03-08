@@ -1,5 +1,5 @@
 import unittest
-from game.intelligence import Intelligence
+from intelligence import Intelligence
 
 class TestIntelligence(unittest.TestCase):
 

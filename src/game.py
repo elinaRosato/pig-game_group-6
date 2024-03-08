@@ -1,8 +1,8 @@
-import dicehand
-import highscores
-import player
-import intelligence
-import histogram
+from dicehand import DiceHand
+from highscores import HighScore
+from player import Player
+from intelligence import Intelligence
+from histogram import Histogram
 
 class Game:
     """
@@ -21,12 +21,12 @@ class Game:
         """
         Initializes a new game with default settings.
         """
-        self.dice_hand = dicehand.DiceHand()
-        self.high_score = highscores.HighScore()
-        self.player1 = player.Player("Player1")
-        self.player2 = player.Player("Player2")
-        self.intelligence = intelligence.Intelligence()
-        self.histogram = histogram.Histogram()
+        self.dice_hand = DiceHand()
+        self.high_score = HighScore()
+        self.player1 = Player("Player1")
+        self.player2 = Player("Player2")
+        self.intelligence = Intelligence()
+        self.histogram = Histogram()
     
     def play(self):
         """
@@ -74,8 +74,9 @@ class Game:
             while True:
                 new_name = input("Enter your new name: ")
                 if len(new_name.strip()) > 0:
+                    oldName = self.player1.name
                     self.player1.change_name(new_name)
-                    self.high_score.update_player_name(self.player1.name, new_name)
+                    self.high_score.update_player_name(oldName, new_name)
                     break
                 else:
                     print("Please enter a non-empty name.")
