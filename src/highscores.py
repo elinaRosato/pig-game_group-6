@@ -3,7 +3,7 @@ import os
 
 #This class manages everything regarding highscores
 class HighScore:
-    
+
     #This method loads up the file
     def __init__(self, filename="highscores.json"):
         if not isinstance(filename, str):
@@ -52,12 +52,12 @@ class HighScore:
     def update_player_name(self, old_name, new_name):
         if not isinstance(old_name, str) or not isinstance(new_name, str):
             raise TypeError("Player names must be strings.")
-        
+
         if new_name in self.highscores:
             raise KeyError("New player name already used by other player.")
-        
+
         if old_name not in self.highscores:
             raise KeyError("Old player name not found.")
-        
+
         self.highscores[new_name] = self.highscores.pop(old_name)
         self.save_highscores()

@@ -27,7 +27,7 @@ class Game:
         self.player2 = Player("Player2")
         self.intelligence = Intelligence()
         self.histogram = Histogram()
-    
+
     def play(self):
         """
         Plays a round of Pig.
@@ -44,7 +44,7 @@ class Game:
             if not another_round:
                 print("Thanks for playing!")
                 break
-    
+
     def get_player_name(self):
         """
         Get the player's name.
@@ -57,9 +57,8 @@ class Game:
             if player_name.strip():
                 self.player1.change_name(player_name)
                 break
-            else:
-                print("Please enter a non-empty name.")
-    
+            print("Please enter a non-empty name.")
+
     def change_player_name(self):
         """
         Change the player's name.
@@ -80,7 +79,7 @@ class Game:
                     break
                 else:
                     print("Please enter a non-empty name.")
-    
+
     def set_opponent(self):
         """
         Set the opponent for the game.
@@ -115,7 +114,7 @@ class Game:
                 break
             else:
                 print("Please choose a valid difficulty level (easy/medium/hard).")
-    
+
     def set_human_opponent(self):
         """
         Set up a human opponent.
@@ -125,7 +124,7 @@ class Game:
         opponent_name = input("Enter your opponent's name: ")
         if len(opponent_name.strip()) > 0:
             self.player2.change_name(opponent_name)
-    
+
     def play_round(self, player1, player2):
         """
         Play a round of the game between two players.
@@ -150,7 +149,7 @@ class Game:
             if player1_score >= 100:
                 print(f"Congratulations, {player1.name}! You win!")
                 self.high_score.update_highscores(player1.name, player1_score)
-                break;
+                break
             else:
                 print(f"\n{player2.name}'s turn:")
                 if player2.is_computer:
@@ -161,14 +160,14 @@ class Game:
                         if player2_score >= 100:
                             print(f"Congratulations, {player2.name}! You win!")
                             self.high_score.update_highscores(player2.name, player2_score)
-                            break;
+                            break
                 else:
                     player2_score += self.take_turn(player2)
                     print(f"{player2.name}'s score: {player2_score}")
                     if player2_score >= 100:
                         print(f"Congratulations, {player2.name}! You win!")
                         self.high_score.update_highscores(player2.name, player2_score)
-                        break;
+                        break
 
     def take_turn(self, player):
         """

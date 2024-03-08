@@ -17,7 +17,7 @@ class TestIntelligence(unittest.TestCase):
         """
         intelligence_instance = Intelligence("easy")
         self.assertEqual(intelligence_instance.difficulty, "easy")
-   
+
     def test_valid_intelligence_initialization_medium(self):
         """
         Test creating an Intelligence instance with a valid medium difficulty.
@@ -31,7 +31,7 @@ class TestIntelligence(unittest.TestCase):
         """
         intelligence_instance = Intelligence("hard")
         self.assertEqual(intelligence_instance.difficulty, "hard")
-    
+
     # Invalid Intelligence Initialization
     def test_invalid_intelligence_initialization_type(self):
         """
@@ -39,15 +39,15 @@ class TestIntelligence(unittest.TestCase):
         """
         # Test case 1: Invalid difficulty type (integer)
         with self.assertRaises(TypeError):
-            intelligence_instance = Intelligence(123)
+            _ = Intelligence(123)
 
         # Test case 2: Invalid difficulty type (float)
         with self.assertRaises(TypeError):
-            intelligence_instance = Intelligence(1.23)
-        
+            _ = Intelligence(1.23)
+
         # Test case 3: Invalid difficulty type (boolean)
         with self.assertRaises(TypeError):
-            intelligence_instance = Intelligence(False)
+            _ = Intelligence(False)
 
     def test_invalid_intelligence_initialization_value(self):
         """
@@ -56,11 +56,11 @@ class TestIntelligence(unittest.TestCase):
 
         # Test case 1: Invalid difficulty type (empty string)
         with self.assertRaises(ValueError):
-            intelligence_instance = Intelligence("")
+            _ = Intelligence("")
 
         # Test case 2: Invalid difficulty type (invalid string)
         with self.assertRaises(ValueError):
-            intelligence_instance = Intelligence("difficult")
+            _ = Intelligence("difficult")
 
     # Set difficulty method with valid and invalid values
     def test_set_difficulty_valid(self):
@@ -102,7 +102,7 @@ class TestIntelligence(unittest.TestCase):
         # Test case 2: Invalid difficulty type (invalid string)
         with self.assertRaises(ValueError):
             intelligence_instance.set_difficulty("difficult")
-    
+
     # Choose turns method with valid and invalid values
     def test_choose_turns_easy(self):
         """
