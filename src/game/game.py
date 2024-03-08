@@ -240,7 +240,21 @@ class Game:
                 else:
                     print("Invalid input. Please enter 'roll' to roll, 'hold' to hold, 'cheat' to activate cheat mode, 'histogram' to display the histogram, 'quit' to quit, or 'restart' to restart the game.")
 
+    def play_again(self):
+        """
+        Check if the player wants to play again.
 
+        This method prompts the player to decide whether they want to play another round.
+        It returns True if the player chooses 'yes' and False otherwise.
+        """
+        while True:
+            play_again = input("Do you want to play again? (yes/no): ").lower()
+            if play_again == "yes":
+                return True
+            elif play_again == "no":
+                return False
+            else:
+                print("Please enter a valid option (yes/no).")
 
 if __name__ == "__main__":
     game = Game()
