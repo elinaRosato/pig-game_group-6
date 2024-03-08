@@ -79,6 +79,24 @@ class Game:
                     break
                 else:
                     print("Please enter a non-empty name.")
+    
+    def set_opponent(self):
+        """
+        Set the opponent for the game.
+
+        This method prompts the user to choose whether to play against the computer or another human player.
+        It then calls the corresponding method to set up the opponent.
+        """
+        while True:
+            opponent_choice = input("Do you want to play against the computer? (yes/no): ").lower()
+            if opponent_choice == "yes":
+                self.set_computer_opponent()
+                break
+            elif opponent_choice == "no":
+                self.set_human_opponent()
+                break
+            else:
+                print("Please enter a valid option (yes/no).")
 
 
 
