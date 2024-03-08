@@ -148,3 +148,12 @@ metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 bandit:
 	@$(call MESSAGE,$@)
 	bandit --recursive src
+
+
+# ---------------------------------------------------------
+# Run game
+#
+.PHONY: run
+
+run:
+    python your_script.py  # Replace 'your_script.py' with the actual name of your Python script
