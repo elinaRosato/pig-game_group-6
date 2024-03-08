@@ -98,6 +98,22 @@ class Game:
             else:
                 print("Please enter a valid option (yes/no).")
 
+    def set_computer_opponent(self):
+        """
+        Set up the computer opponent.
+
+        This method prompts the user to choose the difficulty level (easy/medium/hard) for the computer opponent.
+        It sets the player2's name to "Computer," marks player2 as a computer, and sets the difficulty level for the intelligence.
+        """
+        while True:
+            difficulty = input("Choose difficulty (easy/medium/hard): ").lower()
+            if difficulty in ["easy", "medium", "hard"]:
+                self.player2.name = "Computer"
+                self.player2.is_computer = True
+                self.intelligence.set_difficulty(difficulty)
+                break
+            else:
+                print("Please choose a valid difficulty level (easy/medium/hard).")
 
 
 if __name__ == "__main__":
