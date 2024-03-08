@@ -193,35 +193,39 @@ class TestGame(unittest.TestCase):
             with patch.object(self.game.dice_hand, 'roll_dice', return_value=[1,3]):
                 score = self.game.take_turn(self.game.player2)
         self.assertEqual(score, 0)
-
-    """
     
-
     # Play again
-    @patch('builtins.input', side_effect=['yes'])
     def test_play_again_yes(self):
-        #Test that play_again returns True when the player enters 'yes'.
-        result = self.game.play_again()
+        """
+        Test that play_again returns True when the player enters 'yes'
+        """
+        with patch('builtins.input', side_effect=['yes']):
+            result = self.game.play_again()
         self.assertTrue(result)
 
-    @patch('builtins.input', side_effect=['no'])
     def test_play_again_no(self):
-        #Test that play_again returns False when the player enters 'no'.
-        result = self.game.play_again()
+        """
+        Test that play_again returns False when the player enters 'no'.
+        """
+        with patch('builtins.input', side_effect=['no']):
+            result = self.game.play_again()
         self.assertFalse(result)
 
-    @patch('builtins.input', side_effect=['invalid', 'yes'])
     def test_play_again_invalid_then_yes(self):
-        #Test that play_again handles invalid input and returns True when the player eventually enters 'yes'.
-        result = self.game.play_again()
+        """
+        Test that play_again handles invalid input and returns True when the player eventually enters 'yes'.
+        """
+        with patch('builtins.input', side_effect=['invalid', 'yes']):
+            result = self.game.play_again()
         self.assertTrue(result)
 
-    @patch('builtins.input', side_effect=['invalid', 'another_invalid', 'no'])
     def test_play_again_invalid_then_another_invalid_then_no(self):
-        #Test that play_again handles multiple invalid inputs and returns False when the player eventually enters 'no'.
-        result = self.game.play_again()
+        """
+        Test that play_again handles multiple invalid inputs and returns False when the player eventually enters 'no'.
+        """
+        with patch('builtins.input', side_effect=['invalid', 'another_invalid', 'no']):
+            result = self.game.play_again()
         self.assertFalse(result)
-    """
         
         
 if __name__ == '__main__':
