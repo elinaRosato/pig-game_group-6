@@ -156,4 +156,4 @@ bandit:
 .PHONY: run
 
 run:
-    python game.py  # Replace 'your_script.py' with the actual name of your Python script
+	python3 src/game/game.py 
