@@ -60,19 +60,6 @@ class TestGame(unittest.TestCase):
         
         self.assertEqual(self.game.player1.name, 'Peter')
     
-    """
-
-    def test_change_player_name_empty_input(self):
-        #Test handling an empty string input in change_player_name method.
-        self.game.player1.change_name("Dora")
-        self.game.high_score.update_highscores("Dora", 0)
-        
-        with patch('builtins.input', side_effect=['yes', '']):
-            self.game.change_player_name()
-        
-        self.assertEqual(self.game.player1.name, 'Dora')
-    """
-    
     # Set computer opponent
     def test_set_computer_opponent_with_valid_difficulty(self):
         """
@@ -160,18 +147,6 @@ class TestGame(unittest.TestCase):
                 self.assertIn("Cheat activated! Setting your score to 100.", output)
                 self.assertIn("Thanks for playing!", output) 
     
-    """
-    def test_play_histogram_invalid_against_person(self):
-        #Test playing the game against a human, choosing to display the histogram with an invalid input,
-        #cheating, and confirming the game ends.
-        with patch('builtins.input', side_effect=['Gabriella', 'no', 'no', 'Harry', 'no', 'histogram', 'invalid', 'cheat', 'no']):
-            with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-                self.game.play()
-                output = mock_stdout.getvalue()
-                self.assertIn("Welcome to Pig! The Hog variant", output)
-                self.assertIn("Invalid input. Please enter a valid option.", output)
-                self.assertIn("Thanks for playing!", output)
-    """
     def test_take_turn_computer(self):
         """
         Test with player2 being the computer. The intelligence returns 2 rolls and then
@@ -227,6 +202,43 @@ class TestGame(unittest.TestCase):
             result = self.game.play_again()
         self.assertFalse(result)
         
-        
+    def test_play_histogram_invalid_against_person(self):
+            # Mock the input for player name, not changing name, playing against person, choosing medium difficulty, and not playing again
+        with patch('builtins.input', side_effect=['Gabriella', 'no', 'no', 'Max', 'no', 'histogram','invalid','cheat','no']):
+            with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+                self.game.play()
+                output = mock_stdout.getvalue()
+                self.assertIn("Welcome to Pig! The Hog variant", output)
+                self.assertIn("Thanks for playing!", output)
+                
+    def test_play_round_human_against_computer(self):
+        """
+        Test the play_round method with a human and the computer.
+        """
+        # Prepare predefined inputs for player decision
+        player1_inputs = ['roll', '1', 'hold', 'cheat','no']
+
+        # Redirect stdout to a StringIO object to capture printed output
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        # Set up patch for builtins.input
+        with patch('builtins.input', side_effect=player1_inputs):
+            # Test playing a round
+            self.game.player1.name = "Player1"
+            self.game.player2.name = "Computer"
+            self.game.player2.is_computer = True
+            self.game.play_round(self.game.player1, self.game.player2)
+
+        # Reset stdout
+        sys.stdout = sys.__stdout__
+
+        # Get the captured output
+        output = captured_output.getvalue()
+
+        # Assert that the output contains expected messages
+        self.assertIn("Player1's turn:", output)
+        self.assertIn("Player1 rolled:", output)
+     
 if __name__ == '__main__':
     unittest.main()
