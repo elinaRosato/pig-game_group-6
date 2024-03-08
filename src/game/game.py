@@ -124,6 +124,50 @@ class Game:
         opponent_name = input("Enter your opponent's name: ")
         if len(opponent_name.strip()) > 0:
             self.player2.change_name(opponent_name)
+    
+    def play_round(self, player1, player2):
+        """
+        Play a round of the game between two players.
+
+        Parameters:
+        - player1 (Player): The first player participating in the round.
+        - player2 (Player): The second player participating in the round.
+
+        This method takes the current players (player1 and player2) and conducts their turns until one of them
+        reaches a score of 100 or more. It then displays the winner and updates the high scores.
+        """
+        print(f"\nHello, {player1.name}!")
+        print(f"You are playing against {player2.name}.")
+
+        player1_score = 0
+        player2_score = 0
+
+        while player1_score < 100 and player2_score < 100:
+            print(f"{player1.name}'s turn:")
+            player1_score += self.take_turn(player1)
+            print(f"{player1.name}'s score: {player1_score}")
+            if player1_score >= 100:
+                print(f"Congratulations, {player1.name}! You win!")
+                self.high_score.update_highscores(player1.name, player1_score)
+                break;
+            else:
+                print(f"\n{player2.name}'s turn:")
+                if player2.is_computer:
+                    turns = self.intelligence.choose_turns()
+                    for _ in range(turns):
+                        player2_score += self.take_turn(player2)
+                        print(f"{player2.name}'s score: {player2_score}")
+                        if player2_score >= 100:
+                            print(f"Congratulations, {player2.name}! You win!")
+                            self.high_score.update_highscores(player2.name, player2_score)
+                            break;
+                else:
+                    player2_score += self.take_turn(player2)
+                    print(f"{player2.name}'s score: {player2_score}")
+                    if player2_score >= 100:
+                        print(f"Congratulations, {player2.name}! You win!")
+                        self.high_score.update_highscores(player2.name, player2_score)
+                        break;
 
 
 
