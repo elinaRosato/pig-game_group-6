@@ -172,6 +172,29 @@ class TestGame(unittest.TestCase):
                 self.assertIn("Invalid input. Please enter a valid option.", output)
                 self.assertIn("Thanks for playing!", output)
     
+    def test_take_turn_computer(self):
+        """
+        Test with player2 being the computer. The intelligence returns 2 rolls and then
+        we check that the score is correct.
+        """
+        self.game.player2.is_computer = True
+        with patch.object(self.game.intelligence, 'choose_turns', return_value=2):
+            with patch.object(self.game.dice_hand, 'roll_dice', return_value=[3, 4]):
+                score = self.game.take_turn(self.game.player2)
+        self.assertEqual(score, 7)
 
+    def test_take_turn_computer_roll_1(self):
+        """
+        Test with player2 being the computer. The intelligence returns 2 rolls but one
+        of them is 1, so the score for that turn is 0.
+        """
+        self.game.player2.is_computer = True
+        with patch.object(self.game.intelligence, 'choose_turns', return_value=2):
+            with patch.object(self.game.dice_hand, 'roll_dice', return_value=[1,3]):
+                score = self.game.take_turn(self.game.player2)
+        self.assertEqual(score, 0)
+   
+        
+        
 if __name__ == '__main__':
     unittest.main()
