@@ -1,6 +1,6 @@
 # Pig Game - Examination 2
 
-By Dario Ostojic, Simon Persson and Elina Rosato
+By Dario Ostojic, Elina Rosato and Simon Persson 
 
 This is a Python implementation of the classic dice game Pig. The game is designed to be played in the terminal and offers a simple yet entertaining experience.
 
