@@ -109,6 +109,9 @@ Next you will be asked if you want to play against the computer or against anoth
 
 If you choose to play against the computer it will ask you for the difficulty level.
 
+This level can be either easy, medium or hard. The computer will randomly get a number of turns which will
+be higher depending on this level. The more turns the more chances of accumulating a bigger score. 
+
 After that the turns will start. On each turn each player will have 6 options: roll, hold, cheat, histogram, quit or restart.
 
 When rolling the player needs to also input a number of dices. If any dice turns 1, then all the points accumulated in that round get lost.
