@@ -27,7 +27,7 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">import unittest
-from player import Player 
+from player import Player
 
 
 class TestPlayer(unittest.TestCase):
@@ -37,24 +37,24 @@ class TestPlayer(unittest.TestCase):
         &#34;&#34;&#34;
         Test creating a player with a valid name and default is_computer value.
         &#34;&#34;&#34;
-        player = Player(&#34;Alice&#34;)
-        self.assertEqual(player.name, &#34;Alice&#34;)
+        player = Player(&#34;Sam&#34;)
+        self.assertEqual(player.name, &#34;Sam&#34;)
         self.assertFalse(player.is_computer)
 
     def test_valid_player_initialization_is_computer(self):
         &#34;&#34;&#34;
         Test creating a player with a valid name and is_computer=True.
         &#34;&#34;&#34;
-        player = Player(&#34;Alice&#34;, True)
-        self.assertEqual(player.name, &#34;Alice&#34;)
+        player = Player(&#34;Jessica&#34;, True)
+        self.assertEqual(player.name, &#34;Jessica&#34;)
         self.assertTrue(player.is_computer)
 
     def test_valid_player_initialization_is_not_computer(self):
         &#34;&#34;&#34;
         Test creating a player with a valid name and is_computer=False.
         &#34;&#34;&#34;
-        player = Player(&#34;Alice&#34;, False)
-        self.assertEqual(player.name, &#34;Alice&#34;)
+        player = Player(&#34;Max&#34;, False)
+        self.assertEqual(player.name, &#34;Max&#34;)
         self.assertFalse(player.is_computer)
 
     #Invalid Player Initialization with an invalid player name
@@ -63,42 +63,35 @@ class TestPlayer(unittest.TestCase):
         Test creating a player with an invalid name, in this case an integer, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(123)
-    
+            _ = Player(123)
+
     def test_invalid_player_initialization_with_float(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case a float, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(1.23)
-        
+            _ = Player(1.23)
+
     def test_invalid_player_initialization_with_boolean(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case a boolean, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(True)
-        
+            _ = Player(True)
+
     def test_invalid_player_initialization_with_array(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case an array, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player([&#34;Alice&#34;, &#34;Bob&#34;])
+            _ = Player([&#34;Rebecca&#34;, &#34;David&#34;])
 
     def test_invalid_player_initialization_with_empty_string(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case an empty string, and expect a ValueError.
         &#34;&#34;&#34;
         with self.assertRaises((ValueError)):
-            invalid_player = Player(&#34;&#34;)
-
-    &#34;&#34;&#34;
-    def test_invalid_player_initialization_with_None(self):
-        #Test creating a player with an invalid name, in this case None, and expect a ValueError.
-        with self.assertRaises((ValueError)):
-            invalid_player = Player(None)
-    &#34;&#34;&#34;
+            _ = Player(&#34;&#34;)
 
     #Invalid Player Initialization with an invalid is_computer type
     def test_invalid_player_initialization_with_invalid_is_computer_integer(self):
@@ -106,41 +99,41 @@ class TestPlayer(unittest.TestCase):
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(&#34;Alice&#34;, 123)
+            _ = Player(&#34;Isabelle&#34;, 123)
 
     def test_invalid_player_initialization_with_invalid_is_computer_float(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(&#34;Alice&#34;, 1.23)
-    
+            _ = Player(&#34;Nathalie&#34;, 1.23)
+
     def test_invalid_player_initialization_with_invalid_is_computer_string(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(&#34;Alice&#34;, &#34;yes&#34;)
+            _ = Player(&#34;Jennifer&#34;, &#34;yes&#34;)
 
     # Change Name
     def test_change_name_valid_new_name(self):
         &#34;&#34;&#34;
         Test changing the name of a player with a valid new name.
         &#34;&#34;&#34;
-        player = Player(&#34;Bob&#34;)
+        player = Player(&#34;Matthew&#34;)
         player.change_name(&#34;Charlie&#34;)
         self.assertEqual(player.name, &#34;Charlie&#34;)
-    
+
     def test_change_name_invalid_new_name(self):
         &#34;&#34;&#34;
         Test changing the name of a player with an invalid new name and expect a TypeError or ValueError.
         &#34;&#34;&#34;
-        player = Player(&#34;Bob&#34;)
+        player = Player(&#34;Robert&#34;)
 
         # Test case 1: Invalid new name (integer)
         with self.assertRaises((TypeError)):
             player.change_name(123)
-        
+
         # Test case 1: Invalid new name (boolean)
         with self.assertRaises((TypeError)):
             player.change_name(True)
@@ -206,24 +199,24 @@ not have a method with the specified name.</p></div>
         &#34;&#34;&#34;
         Test creating a player with a valid name and default is_computer value.
         &#34;&#34;&#34;
-        player = Player(&#34;Alice&#34;)
-        self.assertEqual(player.name, &#34;Alice&#34;)
+        player = Player(&#34;Sam&#34;)
+        self.assertEqual(player.name, &#34;Sam&#34;)
         self.assertFalse(player.is_computer)
 
     def test_valid_player_initialization_is_computer(self):
         &#34;&#34;&#34;
         Test creating a player with a valid name and is_computer=True.
         &#34;&#34;&#34;
-        player = Player(&#34;Alice&#34;, True)
-        self.assertEqual(player.name, &#34;Alice&#34;)
+        player = Player(&#34;Jessica&#34;, True)
+        self.assertEqual(player.name, &#34;Jessica&#34;)
         self.assertTrue(player.is_computer)
 
     def test_valid_player_initialization_is_not_computer(self):
         &#34;&#34;&#34;
         Test creating a player with a valid name and is_computer=False.
         &#34;&#34;&#34;
-        player = Player(&#34;Alice&#34;, False)
-        self.assertEqual(player.name, &#34;Alice&#34;)
+        player = Player(&#34;Max&#34;, False)
+        self.assertEqual(player.name, &#34;Max&#34;)
         self.assertFalse(player.is_computer)
 
     #Invalid Player Initialization with an invalid player name
@@ -232,42 +225,35 @@ not have a method with the specified name.</p></div>
         Test creating a player with an invalid name, in this case an integer, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(123)
-    
+            _ = Player(123)
+
     def test_invalid_player_initialization_with_float(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case a float, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(1.23)
-        
+            _ = Player(1.23)
+
     def test_invalid_player_initialization_with_boolean(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case a boolean, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(True)
-        
+            _ = Player(True)
+
     def test_invalid_player_initialization_with_array(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case an array, and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player([&#34;Alice&#34;, &#34;Bob&#34;])
+            _ = Player([&#34;Rebecca&#34;, &#34;David&#34;])
 
     def test_invalid_player_initialization_with_empty_string(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid name, in this case an empty string, and expect a ValueError.
         &#34;&#34;&#34;
         with self.assertRaises((ValueError)):
-            invalid_player = Player(&#34;&#34;)
-
-    &#34;&#34;&#34;
-    def test_invalid_player_initialization_with_None(self):
-        #Test creating a player with an invalid name, in this case None, and expect a ValueError.
-        with self.assertRaises((ValueError)):
-            invalid_player = Player(None)
-    &#34;&#34;&#34;
+            _ = Player(&#34;&#34;)
 
     #Invalid Player Initialization with an invalid is_computer type
     def test_invalid_player_initialization_with_invalid_is_computer_integer(self):
@@ -275,41 +261,41 @@ not have a method with the specified name.</p></div>
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(&#34;Alice&#34;, 123)
+            _ = Player(&#34;Isabelle&#34;, 123)
 
     def test_invalid_player_initialization_with_invalid_is_computer_float(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(&#34;Alice&#34;, 1.23)
-    
+            _ = Player(&#34;Nathalie&#34;, 1.23)
+
     def test_invalid_player_initialization_with_invalid_is_computer_string(self):
         &#34;&#34;&#34;
         Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
         &#34;&#34;&#34;
         with self.assertRaises((TypeError)):
-            invalid_player = Player(&#34;Alice&#34;, &#34;yes&#34;)
+            _ = Player(&#34;Jennifer&#34;, &#34;yes&#34;)
 
     # Change Name
     def test_change_name_valid_new_name(self):
         &#34;&#34;&#34;
         Test changing the name of a player with a valid new name.
         &#34;&#34;&#34;
-        player = Player(&#34;Bob&#34;)
+        player = Player(&#34;Matthew&#34;)
         player.change_name(&#34;Charlie&#34;)
         self.assertEqual(player.name, &#34;Charlie&#34;)
-    
+
     def test_change_name_invalid_new_name(self):
         &#34;&#34;&#34;
         Test changing the name of a player with an invalid new name and expect a TypeError or ValueError.
         &#34;&#34;&#34;
-        player = Player(&#34;Bob&#34;)
+        player = Player(&#34;Robert&#34;)
 
         # Test case 1: Invalid new name (integer)
         with self.assertRaises((TypeError)):
             player.change_name(123)
-        
+
         # Test case 1: Invalid new name (boolean)
         with self.assertRaises((TypeError)):
             player.change_name(True)
@@ -337,12 +323,12 @@ not have a method with the specified name.</p></div>
     &#34;&#34;&#34;
     Test changing the name of a player with an invalid new name and expect a TypeError or ValueError.
     &#34;&#34;&#34;
-    player = Player(&#34;Bob&#34;)
+    player = Player(&#34;Robert&#34;)
 
     # Test case 1: Invalid new name (integer)
     with self.assertRaises((TypeError)):
         player.change_name(123)
-    
+
     # Test case 1: Invalid new name (boolean)
     with self.assertRaises((TypeError)):
         player.change_name(True)
@@ -365,7 +351,7 @@ not have a method with the specified name.</p></div>
     &#34;&#34;&#34;
     Test changing the name of a player with a valid new name.
     &#34;&#34;&#34;
-    player = Player(&#34;Bob&#34;)
+    player = Player(&#34;Matthew&#34;)
     player.change_name(&#34;Charlie&#34;)
     self.assertEqual(player.name, &#34;Charlie&#34;)</code></pre>
 </details>
@@ -384,7 +370,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid name, in this case an array, and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player([&#34;Alice&#34;, &#34;Bob&#34;])</code></pre>
+        _ = Player([&#34;Rebecca&#34;, &#34;David&#34;])</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_boolean"><code class="name flex">
@@ -401,7 +387,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid name, in this case a boolean, and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player(True)</code></pre>
+        _ = Player(True)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_empty_string"><code class="name flex">
@@ -418,7 +404,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid name, in this case an empty string, and expect a ValueError.
     &#34;&#34;&#34;
     with self.assertRaises((ValueError)):
-        invalid_player = Player(&#34;&#34;)</code></pre>
+        _ = Player(&#34;&#34;)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_float"><code class="name flex">
@@ -435,7 +421,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid name, in this case a float, and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player(1.23)</code></pre>
+        _ = Player(1.23)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_integer"><code class="name flex">
@@ -452,7 +438,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid name, in this case an integer, and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player(123)</code></pre>
+        _ = Player(123)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_invalid_is_computer_float"><code class="name flex">
@@ -469,7 +455,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player(&#34;Alice&#34;, 1.23)</code></pre>
+        _ = Player(&#34;Nathalie&#34;, 1.23)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_invalid_is_computer_integer"><code class="name flex">
@@ -486,7 +472,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player(&#34;Alice&#34;, 123)</code></pre>
+        _ = Player(&#34;Isabelle&#34;, 123)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_invalid_player_initialization_with_invalid_is_computer_string"><code class="name flex">
@@ -503,7 +489,7 @@ not have a method with the specified name.</p></div>
     Test creating a player with an invalid is_computer value instead of a boolean and expect a TypeError.
     &#34;&#34;&#34;
     with self.assertRaises((TypeError)):
-        invalid_player = Player(&#34;Alice&#34;, &#34;yes&#34;)</code></pre>
+        _ = Player(&#34;Jennifer&#34;, &#34;yes&#34;)</code></pre>
 </details>
 </dd>
 <dt id="test_player.TestPlayer.test_valid_player_initialization_default"><code class="name flex">
@@ -519,8 +505,8 @@ not have a method with the specified name.</p></div>
     &#34;&#34;&#34;
     Test creating a player with a valid name and default is_computer value.
     &#34;&#34;&#34;
-    player = Player(&#34;Alice&#34;)
-    self.assertEqual(player.name, &#34;Alice&#34;)
+    player = Player(&#34;Sam&#34;)
+    self.assertEqual(player.name, &#34;Sam&#34;)
     self.assertFalse(player.is_computer)</code></pre>
 </details>
 </dd>
@@ -537,8 +523,8 @@ not have a method with the specified name.</p></div>
     &#34;&#34;&#34;
     Test creating a player with a valid name and is_computer=True.
     &#34;&#34;&#34;
-    player = Player(&#34;Alice&#34;, True)
-    self.assertEqual(player.name, &#34;Alice&#34;)
+    player = Player(&#34;Jessica&#34;, True)
+    self.assertEqual(player.name, &#34;Jessica&#34;)
     self.assertTrue(player.is_computer)</code></pre>
 </details>
 </dd>
@@ -555,8 +541,8 @@ not have a method with the specified name.</p></div>
     &#34;&#34;&#34;
     Test creating a player with a valid name and is_computer=False.
     &#34;&#34;&#34;
-    player = Player(&#34;Alice&#34;, False)
-    self.assertEqual(player.name, &#34;Alice&#34;)
+    player = Player(&#34;Max&#34;, False)
+    self.assertEqual(player.name, &#34;Max&#34;)
     self.assertFalse(player.is_computer)</code></pre>
 </details>
 </dd>

@@ -55,7 +55,7 @@ class Game:
         self.player2 = Player(&#34;Player2&#34;)
         self.intelligence = Intelligence()
         self.histogram = Histogram()
-    
+
     def play(self):
         &#34;&#34;&#34;
         Plays a round of Pig.
@@ -72,7 +72,7 @@ class Game:
             if not another_round:
                 print(&#34;Thanks for playing!&#34;)
                 break
-    
+
     def get_player_name(self):
         &#34;&#34;&#34;
         Get the player&#39;s name.
@@ -85,9 +85,8 @@ class Game:
             if player_name.strip():
                 self.player1.change_name(player_name)
                 break
-            else:
-                print(&#34;Please enter a non-empty name.&#34;)
-    
+            print(&#34;Please enter a non-empty name.&#34;)
+
     def change_player_name(self):
         &#34;&#34;&#34;
         Change the player&#39;s name.
@@ -108,7 +107,7 @@ class Game:
                     break
                 else:
                     print(&#34;Please enter a non-empty name.&#34;)
-    
+
     def set_opponent(self):
         &#34;&#34;&#34;
         Set the opponent for the game.
@@ -143,7 +142,7 @@ class Game:
                 break
             else:
                 print(&#34;Please choose a valid difficulty level (easy/medium/hard).&#34;)
-    
+
     def set_human_opponent(self):
         &#34;&#34;&#34;
         Set up a human opponent.
@@ -153,7 +152,7 @@ class Game:
         opponent_name = input(&#34;Enter your opponent&#39;s name: &#34;)
         if len(opponent_name.strip()) &gt; 0:
             self.player2.change_name(opponent_name)
-    
+
     def play_round(self, player1, player2):
         &#34;&#34;&#34;
         Play a round of the game between two players.
@@ -178,7 +177,7 @@ class Game:
             if player1_score &gt;= 100:
                 print(f&#34;Congratulations, {player1.name}! You win!&#34;)
                 self.high_score.update_highscores(player1.name, player1_score)
-                break;
+                break
             else:
                 print(f&#34;\n{player2.name}&#39;s turn:&#34;)
                 if player2.is_computer:
@@ -189,14 +188,14 @@ class Game:
                         if player2_score &gt;= 100:
                             print(f&#34;Congratulations, {player2.name}! You win!&#34;)
                             self.high_score.update_highscores(player2.name, player2_score)
-                            break;
+                            break
                 else:
                     player2_score += self.take_turn(player2)
                     print(f&#34;{player2.name}&#39;s score: {player2_score}&#34;)
                     if player2_score &gt;= 100:
                         print(f&#34;Congratulations, {player2.name}! You win!&#34;)
                         self.high_score.update_highscores(player2.name, player2_score)
-                        break;
+                        break
 
     def take_turn(self, player):
         &#34;&#34;&#34;
@@ -341,7 +340,7 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
         self.player2 = Player(&#34;Player2&#34;)
         self.intelligence = Intelligence()
         self.histogram = Histogram()
-    
+
     def play(self):
         &#34;&#34;&#34;
         Plays a round of Pig.
@@ -358,7 +357,7 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
             if not another_round:
                 print(&#34;Thanks for playing!&#34;)
                 break
-    
+
     def get_player_name(self):
         &#34;&#34;&#34;
         Get the player&#39;s name.
@@ -371,9 +370,8 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
             if player_name.strip():
                 self.player1.change_name(player_name)
                 break
-            else:
-                print(&#34;Please enter a non-empty name.&#34;)
-    
+            print(&#34;Please enter a non-empty name.&#34;)
+
     def change_player_name(self):
         &#34;&#34;&#34;
         Change the player&#39;s name.
@@ -394,7 +392,7 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
                     break
                 else:
                     print(&#34;Please enter a non-empty name.&#34;)
-    
+
     def set_opponent(self):
         &#34;&#34;&#34;
         Set the opponent for the game.
@@ -429,7 +427,7 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
                 break
             else:
                 print(&#34;Please choose a valid difficulty level (easy/medium/hard).&#34;)
-    
+
     def set_human_opponent(self):
         &#34;&#34;&#34;
         Set up a human opponent.
@@ -439,7 +437,7 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
         opponent_name = input(&#34;Enter your opponent&#39;s name: &#34;)
         if len(opponent_name.strip()) &gt; 0:
             self.player2.change_name(opponent_name)
-    
+
     def play_round(self, player1, player2):
         &#34;&#34;&#34;
         Play a round of the game between two players.
@@ -464,7 +462,7 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
             if player1_score &gt;= 100:
                 print(f&#34;Congratulations, {player1.name}! You win!&#34;)
                 self.high_score.update_highscores(player1.name, player1_score)
-                break;
+                break
             else:
                 print(f&#34;\n{player2.name}&#39;s turn:&#34;)
                 if player2.is_computer:
@@ -475,14 +473,14 @@ dice_hand (DiceHand): An instance of the DiceHand class for rolling dice.
                         if player2_score &gt;= 100:
                             print(f&#34;Congratulations, {player2.name}! You win!&#34;)
                             self.high_score.update_highscores(player2.name, player2_score)
-                            break;
+                            break
                 else:
                     player2_score += self.take_turn(player2)
                     print(f&#34;{player2.name}&#39;s score: {player2_score}&#34;)
                     if player2_score &gt;= 100:
                         print(f&#34;Congratulations, {player2.name}! You win!&#34;)
                         self.high_score.update_highscores(player2.name, player2_score)
-                        break;
+                        break
 
     def take_turn(self, player):
         &#34;&#34;&#34;
@@ -633,8 +631,7 @@ Sets the entered name as the player1's name using change_name method.</p></div>
         if player_name.strip():
             self.player1.change_name(player_name)
             break
-        else:
-            print(&#34;Please enter a non-empty name.&#34;)</code></pre>
+        print(&#34;Please enter a non-empty name.&#34;)</code></pre>
 </details>
 </dd>
 <dt id="game.Game.play"><code class="name flex">
@@ -733,7 +730,7 @@ reaches a score of 100 or more. It then displays the winner and updates the high
         if player1_score &gt;= 100:
             print(f&#34;Congratulations, {player1.name}! You win!&#34;)
             self.high_score.update_highscores(player1.name, player1_score)
-            break;
+            break
         else:
             print(f&#34;\n{player2.name}&#39;s turn:&#34;)
             if player2.is_computer:
@@ -744,14 +741,14 @@ reaches a score of 100 or more. It then displays the winner and updates the high
                     if player2_score &gt;= 100:
                         print(f&#34;Congratulations, {player2.name}! You win!&#34;)
                         self.high_score.update_highscores(player2.name, player2_score)
-                        break;
+                        break
             else:
                 player2_score += self.take_turn(player2)
                 print(f&#34;{player2.name}&#39;s score: {player2_score}&#34;)
                 if player2_score &gt;= 100:
                     print(f&#34;Congratulations, {player2.name}! You win!&#34;)
                     self.high_score.update_highscores(player2.name, player2_score)
-                    break;</code></pre>
+                    break</code></pre>
 </details>
 </dd>
 <dt id="game.Game.set_computer_opponent"><code class="name flex">

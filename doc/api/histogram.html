@@ -43,7 +43,7 @@
         self.counts = {}
         for i in range(1, 7):
             self.counts[i] = 0
-    
+
     def add_roll(self, roll):
         &#34;&#34;&#34;
         Adds a dice roll to the histogram.
@@ -60,7 +60,7 @@
         if roll &lt; 1 or roll &gt; 6:
             raise ValueError(&#34;Roll must be an integer within the range [1, 6].&#34;)
         self.counts[roll] += 1
-    
+
     def display(self):
         &#34;&#34;&#34;
         Displays the dice roll histogram.
@@ -111,7 +111,7 @@
         self.counts = {}
         for i in range(1, 7):
             self.counts[i] = 0
-    
+
     def add_roll(self, roll):
         &#34;&#34;&#34;
         Adds a dice roll to the histogram.
@@ -128,7 +128,7 @@
         if roll &lt; 1 or roll &gt; 6:
             raise ValueError(&#34;Roll must be an integer within the range [1, 6].&#34;)
         self.counts[roll] += 1
-    
+
     def display(self):
         &#34;&#34;&#34;
         Displays the dice roll histogram.

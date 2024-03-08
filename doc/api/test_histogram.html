@@ -26,23 +26,25 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import unittest
-from unittest.mock import patch
+<pre><code class="python">import sys
+import io
+import unittest
 from game import Histogram
+
 
 class TestHistogram(unittest.TestCase):
 
     # Set up
     def setUp(self):
         self.histogram = Histogram()
-    
+
     def test_initialization(self):
         &#34;&#34;&#34;
         Test the initialization of the Histogram class.
         &#34;&#34;&#34;
         expected_counts = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
         self.assertEqual(self.histogram.counts, expected_counts)
-    
+
     # Add roll with valid and invalid roll
     def test_add_roll_valid(self):
         &#34;&#34;&#34;
@@ -51,7 +53,7 @@ class TestHistogram(unittest.TestCase):
         self.histogram.add_roll(3)
         expected_counts = {1: 0, 2: 0, 3: 1, 4: 0, 5: 0, 6: 0}
         self.assertEqual(self.histogram.counts, expected_counts)
-    
+
     def test_add_roll_invalid_type(self):
         &#34;&#34;&#34;
         Test adding a roll with an invalid type and expect a TypeError.
@@ -67,11 +69,11 @@ class TestHistogram(unittest.TestCase):
         # Test case 3: Invalid roll (bool)
         with self.assertRaises(TypeError):
             self.histogram.add_roll(False)
-        
+
         # Test case 3: Invalid roll (None)
         with self.assertRaises(TypeError):
             self.histogram.add_roll(None)
-    
+
     def test_add_roll_invalid_value(self):
         &#34;&#34;&#34;
         Test adding a roll with an invalid value and expect a ValueError.
@@ -83,34 +85,18 @@ class TestHistogram(unittest.TestCase):
         # Test case 1: Roll value below the valid range
         with self.assertRaises(ValueError):
             self.histogram.add_roll(7)
-    &#34;&#34;&#34;
-    # Display
-    @patch(&#39;builtins.print&#39;)
-    def test_display(self, mock_print):
-        #Test displaying the histogram.
-        self.histogram.add_roll(2)
-        self.histogram.add_roll(4)
-        expected_output = &#34;Dice Roll Histogram:\n1: \n2: *\n3: \n4: *\n5: \n6: &#34;
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
-    
-    @patch(&#39;builtins.print&#39;)
-    def test_display(self, mock_print):
-        #Test displaying the histogram with no rolls.
-        expected_output = &#34;Dice Roll Histogram:\n1: \n2: \n3: \n4: \n5: \n6: &#34;
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
-    
-    @patch(&#39;builtins.print&#39;)
-    def test_display(self, mock_print):
-         #Test displaying the histogram with reapeted rolls.
-        self.histogram.add_roll(2)
-        self.histogram.add_roll(2)
-        expected_output = &#34;Dice Roll Histogram:\n1: \n2: **\n3: \n4: \n5: \n6: &#34;
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
 
-    &#34;&#34;&#34;
+    def test_display_output(self):
+        &#34;&#34;&#34;Test if display method prints the histogram correctly.&#34;&#34;&#34;
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        self.histogram.add_roll(1)
+        self.histogram.add_roll(2)
+        self.histogram.display()
+        sys.stdout = sys.__stdout__
+        expected_output = &#34;Dice Roll Histogram:\n1: *\n2: *\n3: \n4: \n5: \n6: \n&#34;
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
 if __name__ == &#39;__main__&#39;:
     unittest.main()</code></pre>
 </details>
@@ -166,14 +152,14 @@ not have a method with the specified name.</p></div>
     # Set up
     def setUp(self):
         self.histogram = Histogram()
-    
+
     def test_initialization(self):
         &#34;&#34;&#34;
         Test the initialization of the Histogram class.
         &#34;&#34;&#34;
         expected_counts = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
         self.assertEqual(self.histogram.counts, expected_counts)
-    
+
     # Add roll with valid and invalid roll
     def test_add_roll_valid(self):
         &#34;&#34;&#34;
@@ -182,7 +168,7 @@ not have a method with the specified name.</p></div>
         self.histogram.add_roll(3)
         expected_counts = {1: 0, 2: 0, 3: 1, 4: 0, 5: 0, 6: 0}
         self.assertEqual(self.histogram.counts, expected_counts)
-    
+
     def test_add_roll_invalid_type(self):
         &#34;&#34;&#34;
         Test adding a roll with an invalid type and expect a TypeError.
@@ -198,11 +184,11 @@ not have a method with the specified name.</p></div>
         # Test case 3: Invalid roll (bool)
         with self.assertRaises(TypeError):
             self.histogram.add_roll(False)
-        
+
         # Test case 3: Invalid roll (None)
         with self.assertRaises(TypeError):
             self.histogram.add_roll(None)
-    
+
     def test_add_roll_invalid_value(self):
         &#34;&#34;&#34;
         Test adding a roll with an invalid value and expect a ValueError.
@@ -214,34 +200,17 @@ not have a method with the specified name.</p></div>
         # Test case 1: Roll value below the valid range
         with self.assertRaises(ValueError):
             self.histogram.add_roll(7)
-    &#34;&#34;&#34;
-    # Display
-    @patch(&#39;builtins.print&#39;)
-    def test_display(self, mock_print):
-        #Test displaying the histogram.
-        self.histogram.add_roll(2)
-        self.histogram.add_roll(4)
-        expected_output = &#34;Dice Roll Histogram:\n1: \n2: *\n3: \n4: *\n5: \n6: &#34;
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
-    
-    @patch(&#39;builtins.print&#39;)
-    def test_display(self, mock_print):
-        #Test displaying the histogram with no rolls.
-        expected_output = &#34;Dice Roll Histogram:\n1: \n2: \n3: \n4: \n5: \n6: &#34;
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
-    
-    @patch(&#39;builtins.print&#39;)
-    def test_display(self, mock_print):
-         #Test displaying the histogram with reapeted rolls.
-        self.histogram.add_roll(2)
-        self.histogram.add_roll(2)
-        expected_output = &#34;Dice Roll Histogram:\n1: \n2: **\n3: \n4: \n5: \n6: &#34;
-        self.histogram.display()
-        mock_print.assert_called_with(expected_output)
 
-    &#34;&#34;&#34;</code></pre>
+    def test_display_output(self):
+        &#34;&#34;&#34;Test if display method prints the histogram correctly.&#34;&#34;&#34;
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        self.histogram.add_roll(1)
+        self.histogram.add_roll(2)
+        self.histogram.display()
+        sys.stdout = sys.__stdout__
+        expected_output = &#34;Dice Roll Histogram:\n1: *\n2: *\n3: \n4: \n5: \n6: \n&#34;
+        self.assertEqual(captured_output.getvalue(), expected_output)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -286,7 +255,7 @@ not have a method with the specified name.</p></div>
     # Test case 3: Invalid roll (bool)
     with self.assertRaises(TypeError):
         self.histogram.add_roll(False)
-    
+
     # Test case 3: Invalid roll (None)
     with self.assertRaises(TypeError):
         self.histogram.add_roll(None)</code></pre>
@@ -332,6 +301,27 @@ not have a method with the specified name.</p></div>
     self.assertEqual(self.histogram.counts, expected_counts)</code></pre>
 </details>
 </dd>
+<dt id="test_histogram.TestHistogram.test_display_output"><code class="name flex">
+<span>def <span class="ident">test_display_output</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test if display method prints the histogram correctly.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_display_output(self):
+    &#34;&#34;&#34;Test if display method prints the histogram correctly.&#34;&#34;&#34;
+    captured_output = io.StringIO()
+    sys.stdout = captured_output
+    self.histogram.add_roll(1)
+    self.histogram.add_roll(2)
+    self.histogram.display()
+    sys.stdout = sys.__stdout__
+    expected_output = &#34;Dice Roll Histogram:\n1: *\n2: *\n3: \n4: \n5: \n6: \n&#34;
+    self.assertEqual(captured_output.getvalue(), expected_output)</code></pre>
+</details>
+</dd>
 <dt id="test_histogram.TestHistogram.test_initialization"><code class="name flex">
 <span>def <span class="ident">test_initialization</span></span>(<span>self)</span>
 </code></dt>
@@ -369,6 +359,7 @@ not have a method with the specified name.</p></div>
 <li><code><a title="test_histogram.TestHistogram.test_add_roll_invalid_type" href="#test_histogram.TestHistogram.test_add_roll_invalid_type">test_add_roll_invalid_type</a></code></li>
 <li><code><a title="test_histogram.TestHistogram.test_add_roll_invalid_value" href="#test_histogram.TestHistogram.test_add_roll_invalid_value">test_add_roll_invalid_value</a></code></li>
 <li><code><a title="test_histogram.TestHistogram.test_add_roll_valid" href="#test_histogram.TestHistogram.test_add_roll_valid">test_add_roll_valid</a></code></li>
+<li><code><a title="test_histogram.TestHistogram.test_display_output" href="#test_histogram.TestHistogram.test_display_output">test_display_output</a></code></li>
 <li><code><a title="test_histogram.TestHistogram.test_initialization" href="#test_histogram.TestHistogram.test_initialization">test_initialization</a></code></li>
 </ul>
 </li>

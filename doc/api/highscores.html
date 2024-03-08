@@ -31,7 +31,7 @@ import os
 
 #This class manages everything regarding highscores
 class HighScore:
-    
+
     #This method loads up the file
     def __init__(self, filename=&#34;highscores.json&#34;):
         if not isinstance(filename, str):
@@ -80,13 +80,13 @@ class HighScore:
     def update_player_name(self, old_name, new_name):
         if not isinstance(old_name, str) or not isinstance(new_name, str):
             raise TypeError(&#34;Player names must be strings.&#34;)
-        
+
         if new_name in self.highscores:
             raise KeyError(&#34;New player name already used by other player.&#34;)
-        
+
         if old_name not in self.highscores:
             raise KeyError(&#34;Old player name not found.&#34;)
-        
+
         self.highscores[new_name] = self.highscores.pop(old_name)
         self.save_highscores()</code></pre>
 </details>
@@ -111,7 +111,7 @@ class HighScore:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class HighScore:
-    
+
     #This method loads up the file
     def __init__(self, filename=&#34;highscores.json&#34;):
         if not isinstance(filename, str):
@@ -160,13 +160,13 @@ class HighScore:
     def update_player_name(self, old_name, new_name):
         if not isinstance(old_name, str) or not isinstance(new_name, str):
             raise TypeError(&#34;Player names must be strings.&#34;)
-        
+
         if new_name in self.highscores:
             raise KeyError(&#34;New player name already used by other player.&#34;)
-        
+
         if old_name not in self.highscores:
             raise KeyError(&#34;Old player name not found.&#34;)
-        
+
         self.highscores[new_name] = self.highscores.pop(old_name)
         self.save_highscores()</code></pre>
 </details>
@@ -255,13 +255,13 @@ class HighScore:
 <pre><code class="python">def update_player_name(self, old_name, new_name):
     if not isinstance(old_name, str) or not isinstance(new_name, str):
         raise TypeError(&#34;Player names must be strings.&#34;)
-    
+
     if new_name in self.highscores:
         raise KeyError(&#34;New player name already used by other player.&#34;)
-    
+
     if old_name not in self.highscores:
         raise KeyError(&#34;Old player name not found.&#34;)
-    
+
     self.highscores[new_name] = self.highscores.pop(old_name)
     self.save_highscores()</code></pre>
 </details>

@@ -52,7 +52,7 @@ class Intelligence:
             raise ValueError(&#34;Invalid difficulty level. Valid difficulty levels are &#39;easy&#39;, &#39;medium&#39;, or &#39;hard&#39;.&#34;)
         else:
             self.difficulty = difficulty
-    
+
     def choose_turns(self):
         &#34;&#34;&#34;
         Choose the number of turns based on the difficulty level.
@@ -66,7 +66,7 @@ class Intelligence:
             return random.randint(1, 3)  # Choose 1, 2, or 3 turns
         elif self.difficulty == &#34;hard&#34;:
             return random.randint(2, 4)  # Choose 2, 3, or 4 turns
-    
+
     def set_difficulty(self, difficulty):
         &#34;&#34;&#34;
         Set the difficulty level.
@@ -83,8 +83,7 @@ class Intelligence:
         if difficulty not in self.levels:
             raise ValueError(&#34;Invalid difficulty level. Valid difficulty levels are &#39;easy&#39;, &#39;medium&#39;, or &#39;hard&#39;.&#34;)
         else:
-            self.difficulty = difficulty
-    </code></pre>
+            self.difficulty = difficulty</code></pre>
 </details>
 </section>
 <section>
@@ -136,7 +135,7 @@ class Intelligence:
             raise ValueError(&#34;Invalid difficulty level. Valid difficulty levels are &#39;easy&#39;, &#39;medium&#39;, or &#39;hard&#39;.&#34;)
         else:
             self.difficulty = difficulty
-    
+
     def choose_turns(self):
         &#34;&#34;&#34;
         Choose the number of turns based on the difficulty level.
@@ -150,7 +149,7 @@ class Intelligence:
             return random.randint(1, 3)  # Choose 1, 2, or 3 turns
         elif self.difficulty == &#34;hard&#34;:
             return random.randint(2, 4)  # Choose 2, 3, or 4 turns
-    
+
     def set_difficulty(self, difficulty):
         &#34;&#34;&#34;
         Set the difficulty level.
