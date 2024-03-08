@@ -114,6 +114,17 @@ class Game:
                 break
             else:
                 print("Please choose a valid difficulty level (easy/medium/hard).")
+    
+    def set_human_opponent(self):
+        """
+        Set up a human opponent.
+
+        This method prompts the user to enter the name of the human opponent and sets it as player2's name.
+        """
+        opponent_name = input("Enter your opponent's name: ")
+        if len(opponent_name.strip()) > 0:
+            self.player2.change_name(opponent_name)
+
 
 
 if __name__ == "__main__":
