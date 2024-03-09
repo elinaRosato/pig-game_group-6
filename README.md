@@ -55,7 +55,7 @@ To run the Pig Game, follow these steps:
 ### Step 1:
 Clone the repository to your local machine using the terminal provided by Git Bash: 
 ```bash
-git clone https://github.com/your-username/pig-game.git
+git clone https://github.com/elinaRosato/pig-game_group-6.git
 ```
 The repository and the .zip file include the source code that contains the Python files for executing the game and also other files for testing and executing other functionalities.
 
@@ -141,11 +141,11 @@ In order to generate the documentation, we need to execute in the terminal the c
 make doc
 ```
 
-This command will create a `.html` file in the `doc/api` folder for each Python class in `src/game`.
+This command will create a `.html` file in the `doc/api` folder for each Python class in `src/`.
 
 The convention chosen for the docstrings comments in the classes is `pep257`. You can read more about it and find some examples at https://peps.python.org/pep-0257/ . This configuration can be changed in the file `.pylintrc`, but keep in mind that it will require updating the format of the existing comments so they are reflected in the output files.
 
-We can also generate UML diagrams from our classes in `src/game` by running the command: 
+We can also generate UML diagrams from our classes in `src/` by running the command: 
 ```bash
 make uml
 ```
